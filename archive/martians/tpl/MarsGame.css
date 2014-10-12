@@ -1,0 +1,92 @@
+body
+{
+	background-color:#FFCC99;
+}
+
+body, p, td, th, li, center, input, select, textarea
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+}
+
+table.main {
+	border-collapse:collapse;
+	border:2px solid #000066;
+	background-color:white;
+	width:75%;
+	height:100%;
+}
+
+a
+{
+	color: blue;
+}
+
+a:hover
+{
+	color: red;
+}
+
+h1, h2, h3, h4
+{
+	color: red;
+}
+
+h5, h6
+{
+	color: blue;
+}
+
+h6
+{
+	font-size: 13px;
+}
+
+h5
+{
+	font-size: 15px;
+}
+
+h4
+{
+	font-size: 17px;
+}
+
+h3
+{
+	font-size: 19px;
+}
+
+h2
+{
+	font-size: 21px;
+}
+
+h1
+{
+	font-size: 23px;
+}
+
+td.menu
+{
+	font-size: 12px;
+	padding: 5px;
+	text-align: center;
+	border:2px solid #000066;
+}
+
+sub
+{
+	font-size: 12px;
+}
+
+
+img.logo {
+	border:2px solid #000066;
+}
+
+#current {
+	color: Red;
+	font-weight: bold;
+}
+

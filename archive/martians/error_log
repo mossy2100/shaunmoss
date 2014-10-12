@@ -1,0 +1,4 @@
+[09-Mar-2008 16:11:34] PHP Warning:  main(menu.php) [<a href='function.main'>function.main</a>]: failed to open stream: No such file or directory in /home/ascen4/public_html/dev/martians/tpl/templateTop.php on line 20
+[09-Mar-2008 16:11:34] PHP Warning:  main(menu.php) [<a href='function.main'>function.main</a>]: failed to open stream: No such file or directory in /home/ascen4/public_html/dev/martians/tpl/templateTop.php on line 20
+[09-Mar-2008 16:11:34] PHP Warning:  main(menu.php) [<a href='function.main'>function.main</a>]: failed to open stream: No such file or directory in /home/ascen4/public_html/dev/martians/tpl/templateTop.php on line 20
+[09-Mar-2008 16:11:34] PHP Fatal error:  main() [<a href='function.require'>function.require</a>]: Failed opening required 'menu.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ascen4/public_html/dev/martians/tpl/templateTop.php on line 20

@@ -1,0 +1,31 @@
+#header {
+	height: 143px;
+}
+h1 {
+	height: 135px;
+}
+#header input {
+	height: 19px;
+}
+#header form {
+	text-align: center;
+}
+#nav li {
+	width: 185px;
+	margin-left: 10px;
+	margin-bottom: 2px;
+}
+#nav li a {
+	width: 175px;
+}
+#content {
+	height: 420px;
+}#header form p {
+	font-size: x-small;
+}
+#header form button {
+	font-size: xx-small;
+}
+p {
+	font-size: x-small;
+}

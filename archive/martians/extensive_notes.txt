@@ -1,0 +1,680 @@
+A Mars Game built with PHP
+==========================
+
+"Solar System Traders"?
+
+
+DESIGN RULE #1: KEEP IT SIMPLE!!!
+
+-------------------------------------------------------------------------------------------------------------
+Description
+===========
+
+Welcome to "Interplanetery Entrepeneurs".  This game will teach you all about business,
+while having a lot of fun exploring the solar system at the same time.
+
+You, and all the other players in the game, are space-faring entrepeneurs.  Your goal is to make money.
+
+How it works is this - however much you contribute to the game is multiplied by one million.
+Therefore if invest $10, you have $10,000,000 in the game.  With this money you can buy things
+(land, vehicles, equipment, spaceships, fuel, food), hire employees, or pay rent.
+
+You can't cash out, by which I mean, convert your game money back into real-life money.  Once you've
+added your dollars or euros or yen to the game economy, that's where they stay.
+
+How can you make money in the game?
+An example would be to buy a block of land on Mars and put a mine on it.  Your mine will consume resources
+such as Parts and Fuel, and will produce Metal.  You can sell the Metal to another player at a price which
+is high enough so that you make a profit on your operation.  If you sell Metal where there is no-one else
+around also selling Metal, then you can ask for a higher price.
+
+Another player might make money this way - by buying Metal from you, they could setup a Factory which
+produces Parts.  Then they could sell the parts to another player.
+
+The third player might buy Parts and assemble Vehicles, Robots, Computers, or Spaceships, and sell them.
+etc.
+
+Some players may enjoy being merchants, and transporting different resources around the solar system.
+
+Basically ever player operates their own business, across the solar system.  They can fly from planet to planet,
+trade with other players, have fights, form governments.
+
+Players make their own websites and link to the main game site.
+
+-------------------------------------------------------------------------------------------------------------
+Resources
+=========
+
+Players have resources.  These can include:
+a) money
+b) ships
+c) employees
+d) vehicles
+e) mines
+f) land
+g) buildings
+h) fuel
+i) food
+j) water
+k) materials (metals, plastics, glass, etc)
+
+Water is an important commodity in the game.  There are two types "Clean Water" and "Dirty Water".
+H2O recycling and purification plants convert Dirty Water to Clean Water.  Dirty Water comes from the oceans,
+or is produced by humans and greenhouses.  Humans convert about 3 litres of Clean Water to Dirty Water each day.
+They also convert x L of O2 to CO2 each day.  They also convert x kg of Food to Fertilizer each day.
+
+Ships have to show O2 and CO2 levels, and a warning should appear if the CO2 levels get too high.
+For ships and buildings to convert CO2 back into O2, they use Plants (another resource).  Plants can be bought
+from Gardens.  Gardens need to buy Seeds, Water, Fertilizer, and sometimes O2 and CO2, depends whether they are
+on a breathable surface.  Gardens produce Dirty Water, Plants, Seeds.
+
+Basic Resources
+---------------
+Food
+Plants
+Seeds
+Water (clean, sea, waste)
+Fertilizer
+Wood
+Metal
+Plastic
+Clothing
+Bricks
+Dirt (Earth, Mars, Luna, etc.)
+Air (Earth, Mars)
+CO2
+O2
+Explosives
+He3
+
+
+
+Processing plants
+-----------------
+Mines extract Ore from the planet. (requires - Robotics, Electronics, He3, Explosives)
+Gardens produce Plants from Seeds (requires - Soil, Air, Water, Fertilizer, Seeds, Greenhouse, Atmosphere Processor, He3)
+Water Purifiers convert Sea or Waste Water into Clean Water (requires He3)
+Humans convert Food and Clean Water into Fertilizer and Waste Water.  They also convert O2 into CO2 and consume Clothes.
+Humans also require Accommodation.
+Plants convert CO2 to O2 (require Water and Sunlight)
+Soil Factories convert Regolith to Soil (requires Worms, Soil, Water, Fertilizer, Wood Pulp, Vegetable Waste ?)
+
+
+Will we have animals in the game?
+
+
+Mining and Metals
+-----------------
+Different kinds of Ore and Metals
+	Bauxite => Aluminium
+	Ferric Oxide => O2, Steel, Iron
+	etc.
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Relationships/rules
+-------------------
+Ships cost money.
+Ships need fuel and crew members.
+Crew members need food.
+Ships can carry supplies, amount limited by weight and volume constraints.
+Ships can trade * food * water * money * vehicles * materials * parts/components
+One day in the game equals one day in the real world.
+Game time is current local time plus 100 years.
+Every $1 contributed to the game is equal to $1M in the game.
+
+
+-------------------------------------------------------------------------------------------------------------
+Shops
+=====
+Shops can be set up at specified points.
+A shop requires employees and supplies.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Food, water and air
+===================
+
+Food is consumed at the rate of 300g/person/day.
+Water is consumed at the rate of 3kg/person/day, but can be recycled.
+Air is consumed at the rate of ?kg/person/day, but can be recycled.
+
+Farms and gardens require sunlight, water, fertilizer, seeds, soil, and CO2.
+Farms produce food.
+
+
+-------------------------------------------------------------------------------------------------------------
+Finance
+=======
+Players can play for free, but they will have no money in the game.  The currency in the game is
+Space Dollars (SPD).  The symbol is $.
+
+Money is converted in the following way:
+	The player's contribution is converted to Australian Dollars, then multiplied by $1,000,000.
+
+So for example, if someone donates US$10:
+	10 USD = 13.8 AUD
+	       = 13.8 million SPD
+	       = $13,800,00
+
+
+1 EUR = 1.7 AUD
+1 USD = 1.38 AUD
+1 JPY = 0.01266 AUD
+
+If I use PayPal then I accept 5 currencies (and they will be adding more): US Dollars, Euroes, Yen,
+Canadian Dollars and British Pounds.
+
+All money is handled electronically in the game - it does not exist in physical form.  Money is simply
+transferred between accounts (cashless).
+
+Gold or other precious metals or materials can also be used for trading.
+When players contribute money to the game, they get a certain amount of gold added to their account.
+This is according to current exchange rates and price of gold.
+
+Need a way for people to take their money back out of the game.
+
+PayPal?  e-gold?  BOTH - I need both of these accounts, and maybe others.
+
+My database has to keep track of how much money everyone has, and all transactions.
+Whenever they make a real cash payment, by whatever method, I have to record a certain amount in their account.
+This is stored in their resources table.
+
+Purchases are a single transaction - the player can not receive the item then not pay the money.
+The Seller can initiate the Purchase - select [Offer to sell the ITEM for $X]. Then the Buyer can [accept] or [reject] the offer.
+If the accept then they receive ITEM and $X is deducted from their bank account.  They can also counter-offer (make another offer back).
+Similarly, the Buyer can initiate the Purchase - select [Offer to buy the ITEM for $X].  (they can't select an $X which is more than they have in their account).  Then the Seller can [accept] or [reject] the offer, or make a [counter-offer].
+
+
+-------------------------------------------------------------------------------------------------------------
+Vehicles, travel and transport
+==============================
+
+Ships can be flyers, which can go between orbit and surface.
+Most ships will be basically 'flying saucers' or hyperspace jumpers, that can go from surface to orbit,
+and between planets.
+
+Travel takes no time - as long as it takes for the page to load.  The assumption is that we have ships that
+can take us wherever we want to go at the click of a button.
+"All ships in the game use an advanced hyperspace engine to move between different points in the solar system
+without actually having to travel through time and space"
+When they click to go to a new destination, a window pops up saying something like
+"preparing for hyperspace..."
+
+However, although the travel costs no time, it does cost fuel.  Helium-3 is the fuel used by everyone for
+all transportation and electricity generation.  In the beginning stages of the game, fuel can be obtained
+from certain government(?)-operated depos, but later it would be good if players could mine and sell fuel
+themselves.
+
+If they're inside a ship, the screen changes to look like the inside of a ship.  Same with a rover or
+certain buildings.
+
+Players can bookmark their favourite locations (for example, where their farms and mines and factories and
+homes are, etc.
+
+
+-------------------------------------------------------------------------------------------------------------
+Navigation
+==========
+If they're in space, then there is a menu down the bottom with all the planets.  If they click on one, 
+then they go immediately to that planet.
+Mercury - Venus - Earth - Mars - A-Belt - Jupiter - Saturn - Uranus - Neptune - K-Belt
+
+If they go to Earth then the can select from the Earth or Luna.
+then they get a close-up view of that world, which has labels on it showing cities.  If they can't see the
+city they want from their current position, they can fly around the planet.
+Then they can click on the name of a city to land there.
+
+Within a city
+-------------
+Can move around from the spaceport similar to choose-your-own adventure.
+e.g.
+[Move North to the shops]
+[Move East to the village]
+[Move South to the shipyard]
+[Move West to the bank]
+
+
+What could be in a 'village'?  Of course, it can be a collection of houses etc. modelled by the players.
+I could ask players to create models and pictures for the game.  They could get paid in Space Dollars.
+
+
+-------------------------------------------------------------------------------------------------------------
+Locations and maps
+==================
+
+A 3D environment is not needed. Only 2D images of each location.
+
+Locations/pictures:
+1. Earth orbit
+2. Moon orbit
+3. Mars orbit
+4. Plan view of bases and cities.
+5. Special locations on the ground, for example, Manly Ferry Spaceport
+6. Pictures of mines, vehicles, buildings, ships, etc.
+7. Phobos
+8. Deimos
+9. Mercury
+10. Venus
+11. Titan
+12. Io
+13. Ganymede
+14. Callisto
+15. Europa
+16. Triton
+etc.
+
+
+When 2 people are at the same location, they can see each other - a box shows their names which can be
+clicked on to send them a message.
+
+There also needs to be a map to show where everyone is, including all buildings and vehicles.
+We could possibly divide up each planet into a grid (perhaps triangular) to show where everything is.
+What would Mars look like with a triangle grid superimposed over it?
+How would we generate this image of Mars from different angles?
+Perhaps a dymaxion projection would suffice, or an icosahedron.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Land ownership and usage
+========================
+
+Planets are divided into blocks of land, which people can own and trade.
+
+Depending on the type of land, the players can do something with their land.
+* mine it
+* develop it into a city
+* farm it (if on land, crops; if on water, fish)
+* put buildings on it (how many?)
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Shops
+=====
+Food & water
+Shipyard
+Car-yard
+Heavy machinery
+Computers
+
+
+-------------------------------------------------------------------------------------------------------------
+Communications
+==============
+
+Players can send each other messages through the game system.  Works like SMS.  They can open up "channels"
+which can be for just 2 people or for many (similar to mirc).
+Channels can be numbered, or there can be special channels that are named, such as "all", or "emergency",
+or "help".  As soon as one player contacts another, the first empty channel is selected.  If the person is
+in another conversation on another channel, then a message comes back saying that the person has another
+channel open.  A channel can be open or closed.  Anyone can join an open channel.  To join a closed channel
+the chatter who joined earliest must give permission.
+
+The players can also keep in touch with each other using a chat program such as MSN or Yahoo or AIM.
+This could be built into the site but I think it's easier to start off using the chat programs
+(i.e. it's a nice-to-have not a need-to-have).
+
+
+-------------------------------------------------------------------------------------------------------------
+Player interaction with the environment
+=======================================
+How to make the game more interesting - there must be more things for the players to do.
+Trade is a part of it but they need to also be able to:
+* build new buildings
+* start mines
+* set up shops (all they have to do is supply materials and set prices for them, and supply employees and set
+wages for them)
+
+
+-------------------------------------------------------------------------------------------------------------
+Strategy
+========
+Start with Earth, Moon and Mars as locations.  Then add planets and moons as the game grows.
+As each is added, what information is needed?
+
+* number of cities and bases
+* what vehicles and buildings
+* what natural resources, i.e. minerals
+* what special features does it have? (e.g. on Earth, no domes required; on Mars, plants grow well;
+on Venus, very hot and expensive to build; etc.)
+
+
+-------------------------------------------------------------------------------------------------------------
+Database
+========
+
+resources
+---------
+resourceId
+name
+description
+unit (e.g. 'g', 'kg', 'tonnes', 'units', 'm3')
+
+
+player
+------
+playerId
+gameName
+realName
+phMobile
+email
+idMSNMessenger
+idYahoo
+idAIM
+idICQ
+countryId
+
+
+playerresources
+---------------
+playerId
+resourceId
+quantity
+units (e.g. 'g', 'kg', 'tonnes', 'units', 'm3')
+
+
+shiptypes
+---------
+shipTypeId
+name
+description
+range (e.g. surface-to-surface, surface-to-orbit, orbit-to-orbit)
+minCrew
+maxPassengers
+maxWeight
+maxVolume
+
+
+worlds
+------
+name
+type (sun, planet, moon, asteroid)
+inOrbitAround (sun, Earth, Jupiter, etc.)
+spherical (Y/N)
+diameter (for round worlds)
+length  {for 
+width	{asteroids
+height	{& small moons
+breathableAtmosphere (Y/N)
+solidSurface (Y/N)
+
+
+-------------------------------------------------------------------------------------------------------------
+Interactivity
+=============
+
+The game will periodically cause things to happen.  For example, in space somewhere a message could come through
+"Your ship has been hit by a meteorite!"  and the O2 levels start decreasing.
+What can the player do to get the ship fixed?
+a) They have to land on a planet where they can breathe (Earth or Mars)
+b) They have to get to a shipyard or repair facility of some kind
+c) They have to spend whatever it costs for the repair (warning - don't do this too much or people will think you
+are trying to get money off them!  You would have to make the probability of being hit by a meteorite public
+knowledge.
+* If their ship runs out of oxygen due to a leak then they can put their spacesuit on and use
+the suit oxygen (until that runs out).
+
+For example, in the rules:
+* for each minute in space, there is a 1 in a thousand chance of being hit by a meteorite.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+History
+=======
+
+History 2004-2104
+
+Helium-3 is the fuel of choice for practically all fuel purposes. The power of fusion hes enabled sub-light-speed travel throughout the solar system. The human race has made contact with other civilizations. Some of the ships look like flying saucers, some look like rockets.
+
+Players should be able to design their own ships, using something like Maya or 3D Studio Max, and these models, or pictures, should be available to all the other players. Players should be able to send each other pictures or files.
+
+
+
+
+The Earth has been dramatically changed.
+
+In the early 21st century there was a cataclysmic global event known as the Pole Shift.  This is when a planet becomes unstable in its current position, begins to wobble and finds a new axis of rotation.  This is what happened to the Earth.
+
+Due to excessive warming of the planet, the ice-caps began melting.  This caused water to flow around the planet, finding a new, higher level, and making the planet heavier in some places and lighter in others.  The Earth became unstable in its rotation, and the poles shifted.
+
+The Earth's crust is made up of a number of very large plates of rock known as tectonic plates.  These plates float on a sea of molten lava.  The plates interlock forming the crust of the Earth, but they also push against and pull away from each other, which causes things like earthquakes, volcanoes, and makes mountain ranges.
+
+Because these plates are not solidly fixed together, the ones near the equator hang outward from the exis of rotation due to centrifugal force.  This is why the Earth is not perfectly spherical, but spheroidal, like a ball that's been squashed at the poles.  The poles are closer to the center of the Earth than points on the equator.
+
+When the poles shifted, some of the land that was not near the equator now was, which meant that, due to centrifugal force, those plates started moving away from the centre of the Earth.  Similarly, some of the plates that were around the equator before were now closer to the new poles, which caused these plates to move toward the centre of the Earth.  So all these massive tectonic plates, some of which are bigger than whole continents, are grinding against each other.  And what does that cause?  Earthquakes.  Big ones.
+
+Most of the Earth's cities were destroyed, if not by the quakes then the tidal waves.  The huge movements in the Earth's crust caused gigantic waves right across the oceans.  One wave went completely over Japan.  Another washed halfway into the middle of Australia.
+
+The Pole Shift only took a few days, although the after-tremors as the Earth gradually adjusted to it's new position continued for many months.  All populations are as far as possible from fault lines - most went to high ground because the (old) pole caps then began to fully melt and the sea levels became very high.
+
+In the aftermath the Earth began to rebuild.  People pulled together as never before, regardless of culture or language.  Everyone was in shock that this had happened.  Everywhere, destruction and death.
+
+Some new settlements began to build.  There were lots of commsats that hadn't been affected so communications were quickly restored.  There were lots of areas that weren't affected.  Afterwards, countries only existed in a geographical sense, there was no longer any nations.
+
+Earth is now 90% covered in water.
+
+Perhaps the most significant benefit of the shift was the huge surge in scientific and technological advancement that came afterwards.  There was no reason to hide science or technology from anyone - corporate and government competition was temporarily suspended, as people offered everything they could to people in trouble.
+
+Many new technologies were developed - greenhouses and environment control systems that enabled people to live in the desert, or in the tundra.  Robotic farming machinery.  New GE crops.  New propulsion systems based on geomagnetic fields.  It became very easy to move people and resources around.  Before long there were cars flying all around the planet.  People were everywhere.  Many, many boats as the Earth was so covered in water - everywhere was an island really.
+
+It was natural then that with the new technologies, scientists began to look outwards towards space.  They went to Luna first, and started building bases, then Mars followed quickly after.  Mars was popular with astronauts, much more so than Luna, and soon passenger flights were available.  Hilton built a hotel on Luna, then one on Mars.  Clearly tourism was going to be one of the biggest industries in space.
+
+Helium-3 mining operations started up on Luna, which opened up a whole new world of energy for Earth.  With fusion technology advancing rapidly, electricty quickly became orders of magnitude cheaper and more abundant.  Safe, He3-fueled fusion reactors were powering cities worldwide.  Helium-3 became the "new oil".
+
+New fusion engines capable of creating high-density magnetic fields made inertia-free, sub-light-speed flight possible.  Ships were designed with reactors so powerful they could generate their own spacetime fields.  This enabled the ships to accelerate and decelerate ultra-quickly, because there was no inertial effect on the occupants.  By directing energy with a specific vibration matching the vibration of the destination, the ship could be drawn towards the point of focus extremely fast.  This advancement completely opened up the solar system.  Most people went to Mars.
+
+Many new corporations set up shop on Mars, hoping to cash in on the mass migration.  Huge under-dome cities were constructed, and many thousands emigrated.
+
+So, to begin with there are 16 cities on Earth, 8 cities on Mars, 4 cities on Luna, and bases on Nerio, Liber, Ganymede and Callisto.  Each of these has a spaceport.  Some are bigger than others.
+
+Earth cities
+------------
+Mawson
+Canberra
+New Sydney
+Emerald
+Christchurch
+New York II
+Boulder
+Toronto
+Santiago
+Rio De Janeiro
+Zagreb
+Den Haag (seat of Earth administration)
+Manchester
+Katmandu
+New Seoul
+Cairo
+Space Station: Einstein
+
+
+Mars cities
+-----------
+Zubrin
+Robinson
+Kepler
+Cydonia
+Hellas
+Olympus Mons
+Ribbens
+Space Stations: Nerio and Liber
+
+
+Luna cities
+-----------
+Aitkens
+Apollo
+Armstrong
+Brisbane
+
+
+Other bases with spaceports
+---------------------------
+Ganymede
+Callisto
+Triton
+Miranda
+Pluto
+Mercury
+
+
+Asteroid space stations
+-----------------------
+Nerio, Liber
+Ceres, Pallas, Vesta
+Charon, Quaoar, Sedna, Ixion ?
+
+
+Other space stations
+--------------------
+Aphrodite, around Venus
+Huygens, around Titan
+
+
+
+
+Total number of bases: 32
+
+
+
+Mars has been terraformed and is about one-third covered in water.  It now has more land surface area than Earth.
+It has a breathable atmosphere (only place other than Earth).  About 300 million people live on Mars.  About 1 billion live on Earth.
+About 250,000 live on Luna.  About 10,000 on Nerio, about 5,000 on Liber,  about 50,000 on Ganymede and 20,000 on Callisto.
+Could have colonies around Saturn, Uranus and Neptune too.
+Titan and Venus are partly terraformed - they have space stations in orbit around them.
+
+
+So - we have to design two planets:
+1. A future Earth largely covered by oceans and with different locations of poles and different shapes of continents.
+2. A future Mars, terraformed, with oceans and rivers.
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Ultimate Goals
+==============
+
+Players can fly around the different worlds!  Using some Flash-3D interface I expect.
+They can also walk around in spacesuits, etc.
+Maps will be much more elaborate - 3-dimensional.  Players will be able to explore cities and bases, with
+an interface something like Sims, e.g. an isometric view looking at the avatar.
+
+Players can click on shops or other things in the window, which opens up special interfaces for that thing.
+For example, clicking on a shop-front would open up an interface where the player could buy, sell or trade
+with the shopkeeper.
+
+Perhaps players could operate their shops remotely, I mean, they could be on another world and someone goes to their
+shop.  They get alerted then they can make a trade.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Technology of 2104
+==================
+Thanks to the advances in quantum computing and quantum communiucation technology, information is retrieved almost instantanously - Internet is available throughout the solar system.
+
+Thanks to advances in fusion-gravitic engines, ships can accelerate to warp speed extremely quickly - it takes only a few seconds to travel all the way across the solar system (see Celestia).
+
+Communications is also instantaneous (all travels by the internet).  Players can keep in touch with each other wherever they are.
+Money transferred instantaneously between accounts.
+
+Buildings are constructed extremely quickly by robots, usually overnight.  Therefore you can purchase a building one day and then next day it will be visible.  The time it takes depends on how big the building is.  Initially buildings can be purchased from the government. but later perhaps they can be bought from private contractors - especially if a special design is desired.  (What I mean is, someone could construct 3D models of buildings, to make their place or other people's unique - all you have to do is allow them to contribute their own 3D models - then people can make a business out of designing them.  You would have to set design parameters, for example, how many grid squares it takes up.  Also then you would have to specify what it's requirements and output were.)
+
+
+-------------------------------------------------------------------------------------------------------------
+Avatars
+=======
+Every player can upload an Avatar.  This can be any picture file they want, up to 2MB in size, which is then resized to
+an 50x50 icon.  This becomes a way of recognising them.
+
+The lower-left panel shows the avatars of people on your channel, or of people at your location.  This way you can bump into people
+you may not have seen for a while, and invite them to join your channel.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Time, Clocks and Calendars
+==========================
+
+Common date/time = MJD (Modified Julian Date to 5 decimal places).  This is the common time throughout the solar system, always visible.
+Players use this clock for meetings, etc.
+Earth clock and calendar: Aristean Calendar
+Mars clock and calendar: Kepler Calendar (perpetual version)
+Jupiter clock and calendar: Galileo calendar
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Land
+====
+All land in the solar system is owned by the Government (me).
+I can lease it to the players for a certain amount of time (a year at a time).  They have to pay a certain amount of rent for the land (for example, $1000 per month).
+
+In that time they can build on the land, mine it, farm it, etc.  If they stop paying rent on their land then they are allowed 1 month to catch up, after that then they lose the land and their buildings become the property of the government.  Of course, they can sell their buildings and lease to another player.
+
+
+-------------------------------------------------------------------------------------------------------------
+Cities
+======
+Divided in to a square grid, 10m x 10m.  Grids can be used for buildings, parking, farms, gardens, etc.
+When a player chooses a city from the globe, then they get a plan view of the city.
+
+The city is stored as
+a) a plan view of the ground
+b) buildings which are drawn on top
+
+Whenever a player parks their ship, it becomes visible on the map. (do we even want the player's to be able to park their ships? is it necessary?)
+
+They can see a view of their land from above, and click on different things to perform actions.  For example,
+let's say someone uses their land for a Farm.  They can click on the Farm and use options such as:
+ - unload Fertilizer
+ - load Food (x kg)
+ - unload Water
+ - unload He3
+ etc.
+
+To save time, the plan view of the city can be generated each day (when the new buildings go up).  Then the players only have to download one new image per city each day.  We can have a image cache.
+
+
+-------------------------------------------------------------------------------------------------------------
+Graphics
+========
+Use the Celestia software for this.  The players can quickly zoom around the solar system (and in the future, to other solar systems as well - we can add solar systems and alien races as the game grows).
+
+When they travel to a planet, they can see the names of cities superimposed on their viewscreen.  By clicking on a city's name, then can fly in and view the city from above.  Then they can zoom in to different parts of it.  Then they can click on different buildings to perform actions.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Special items
+=============
+For example, items of equipment, artifacts, etc.
+Then you could have quests, for example, locate and collect the 3 stones of Isis - and post a reward of $100,000,000.
+The players could find the items, trade them, sell them, etc.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Combat
+======
+Should we have combat in the game?  Where ships fight each other?
+Then have to introduce Health, Weapons, a combat system, etc.
+If a Ship is damaged then it could start to lose water or air, or an engine (for example, a space-to-space vehicle might get converted to a surface-to-space vehicle).
+
+Maybe when the interface is more advanced, and we can see other ships in orbit around planets, then we could fire on them.
+It's pretty easy to run away, just select a different location to go to and you zoom off!
+But still, your ship could get damaged if someone attacks.
+
+
+
+
+
+
+

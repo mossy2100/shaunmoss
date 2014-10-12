@@ -1,0 +1,203 @@
+<html>
+<head> 
+
+<title>Unicode Characters to HTML Entities Converter</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<style>
+body, td, th, input {font-size:13px; font-family:Arial,Helvetica}
+</style>
+
+</head> 
+<body> 
+
+<h3>Unicode Characters to HTML Character Entities Converter</h3>
+
+<p>A utility to convert Unicode characters to decimal and hexadecimal HTML entities. <i><br>(by <a href='http://www.marsengineering.com'>Shaun Moss</a>, adapted from: <a href='http://www.mikezilla.com/exp0012.html'>ASCII to HEX to Unicode Converter</a> by <a href='http://www.mikezilla.com/'>Mike Golding</a>)</i></p>
+
+<p>The partial conversions do not convert characters with a code of 127 or less, (i.e. plain old ASCII characters), which can appear in HTML code as they are.<br>
+<a href='http://czyborra.com/charsets/iso8859.html'>More about character sets.</a></p>
+
+<form> 
+
+<table border=0 cellspacing=0 cellpadding=2>
+<tr>
+	<td width=150><b>Unicode characters:</b></td>
+	<td><input name='unicodeChars' style='width:300px'> <input type="button" value="Convert" onClick="convertFromChars()"></td>
+</tr>
+<tr>
+	<td colspan=2>&nbsp;</td>
+</tr>
+<tr>
+	<td colspan=2><b>HTML character entities:</b></td>
+</tr>
+<tr>
+	<td>decimal, full:</td>
+	<td><input type="text" name="decFull" style='width:300px'> <input type="button" value="Convert" onClick="convertFromEntities('decFull')"></td>
+</tr>
+<tr>
+	<td>decimal, partial:</td>
+	<td><input type="text" name="decPart" style='width:300px'> <input type="button" value="Convert" onClick="convertFromEntities('decPart')"></td>
+</tr>
+<tr>
+	<td>hexadecimal, full:</td>
+	<td><input type="text" name="hexFull" style='width:300px'> <input type="button" value="Convert" onClick="convertFromEntities('hexFull')"></td>
+</tr>
+<tr>
+	<td>hexadecimal, partial:</td>
+	<td><input type="text" name="hexPart" style='width:300px'> <input type="button" value="Convert" onClick="convertFromEntities('hexPart')"></td>
+</tr>
+</table>
+<br>
+<input type="reset" value="Clear">
+
+</form>
+
+<p>I usually use 'partial decimal' for HTML code.  I have noticed some quirkiness with the hexadecimal codes - sometimes the HTML entity is not converted to the character and appears on the page unconverted (e.g. &amp;#xC6D4; instead of &#50900;).  Also, although some text editors will allow you to type Latin 1 characters (e.g. &#233;, &#231;) into your HTML code, these characters do not always render properly (not sure why, if you know please email me).  For maximum reliability use decimal HTML entities for any non-ASCII characters.</p>
+
+<p>Check out <a href='monthAndDayNames.html'>Month and Day Names in 14 Langauges</a> to see these HTML entities in action.</p>
+
+
+<script language="javascript" type="text/javascript"> 
+<!-- 
+
+
+var form = document.forms[0];
+
+
+function str_replace(search, replace, subject)
+{
+	var result = subject;
+	var left, right;
+	var minSearchPos = 0;
+	var searchPos = result.indexOf(search);
+	while (searchPos >= minSearchPos)
+	{
+		// get whatever is to the left of search string:
+		left = result.substring(0, searchPos);
+		right = result.substr(searchPos + search.length);
+		// update result:
+		result = left + replace + right;
+		// move the minimum search pos to just past the new replacement:
+		minSearchPos = searchPos + replace.length;
+		// look for search string again:
+		searchPos = right.indexOf(search) + minSearchPos;
+	}
+	return result;
+}
+
+
+function debug_r(arr)
+{
+	var str = '';
+	for (var el in arr)
+	{
+		if (typeof(arr[el]) == 'object')
+			str += el + " => " + debug_r(arr[el]) + "\n";
+		else
+			str += el + " => " + arr[el] + "\n";
+	}
+	alert(str);
+}
+
+
+function entityToChar(entity)
+{
+	// converts an HTML entity to a character:
+	entity = entity.toLowerCase(entity);
+	if (entity.charAt(2) == 'x')
+		var num = parseInt(entity.substr(3, entity.length - 4), 16);
+	else
+		var num = parseInt(entity.substr(2, entity.length - 3));
+	return String.fromCharCode(num);
+}
+
+
+function convertFromEntities(field)
+{
+	var entities = form[field].value;
+	var r, matches, entity;
+	while (true)
+	{
+		r = new RegExp("&#[0-9]+;|&#x[0-9A-F]+;", "gi");
+		matches = r.exec(entities);
+		//debug_r(matches);
+		if (matches == null)
+			break;
+		entity = matches[0];
+		entities = str_replace(entity, entityToChar(entity), entities);
+	}
+	form.unicodeChars.value = entities;
+	convertFromChars();
+}
+
+
+function convertFromChars()
+{
+	if (form.unicodeChars.value != '')
+	{
+		var unicodeChars = form.unicodeChars.value;
+		form.decFull.value = convertToDecFull(unicodeChars);
+		form.decPart.value = convertToDecPart(unicodeChars);
+		form.hexFull.value = convertToHexFull(unicodeChars);
+		form.hexPart.value = convertToHexPart(unicodeChars);
+	}
+}
+
+
+function convertToDecFull(source)
+{
+	var result = '';
+	for (var i = 0; i < source.length; i++)
+		result += '&#' + source.charCodeAt(i) + ';';
+	return result;
+}
+
+
+function convertToDecPart(source)
+{
+	var result = '';
+	var charCode;
+	for (var i = 0; i < source.length; i++)
+	{
+		charCode = source.charCodeAt(i);
+		if (charCode <= 127)
+			result += source.charAt(i);
+		else
+			result += '&#' + charCode + ';';
+	}
+	return result;
+}
+
+
+function convertToHexFull(source)
+{
+	var result = '';
+	for (var i = 0; i < source.length; i++)
+		result += '&#x' + source.charCodeAt(i).toString(16).toUpperCase() + ';';
+	return result;
+}
+
+
+function convertToHexPart(source)
+{
+	var result = '';
+	var charCode;
+	for (var i = 0; i < source.length; i++)
+	{
+		charCode = source.charCodeAt(i);
+		if (charCode <= 127)
+			result += source.charAt(i);
+		else
+			result += '&#x' + charCode.toString(16).toUpperCase() + ';';
+	}
+	return result;
+}
+
+
+//-->
+</script>
+
+
+</body>
+</html>
