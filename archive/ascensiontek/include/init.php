@@ -17,8 +17,8 @@ if ($local)
   $baseUrl = $ascensionTekUrl;
   $baseDir = $ascensionTekDir;
 
-  $SilvergreenDir = "$smUrl/archive/silvergreen";
-  $SilvergreenUrl = "$smDir/archive/silvergreen";
+  $SilvergreenUrl = "$smUrl/archive/silvergreen";
+  $SilvergreenDir = "$smDir/archive/silvergreen";
 
   // Database settings:
   $dbHost = "localhost";
@@ -50,8 +50,8 @@ else
 
 function subdomainUrl($subdomain)
 {
-  global $localSite, $baseUrl;
-  if ($localSite)
+  global $local, $baseUrl;
+  if ($local)
     return "$baseUrl/$subdomain";
   else
     return "http://$subdomain.tek.ac";

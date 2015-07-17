@@ -5,30 +5,47 @@
 session_start();
 
 // find base url and directory:
-$localSite = strpos($_SERVER['HTTP_HOST'], '.local') !== false;
-if ($localSite)
+$local = strpos($_SERVER['HTTP_HOST'], 'local') !== FALSE;
+if ($local)
 {
-	$baseUrl = "http://silvergreen.local";
-	$baseDir = "/Users/shaun/Dropbox/Projects/archive/Silvergreen/www";
+  $smUrl = "http://local.shaunmoss.com";
+  $smDir = "/Users/shaun/Dropbox/PROJECTS/shaunmoss.com/shaunmoss6";
+
+  $ascensionTekUrl = "$smUrl/archive/ascensiontek";
+  $ascensionTekDir = "$smDir/archive/ascensiontek";
+
+  $SilvergreenUrl = "$smUrl/archive/silvergreen";
+  $SilvergreenDir = "$smDir/archive/silvergreen";
+
+  $baseUrl = $SilvergreenUrl;
+  $baseDir = $SilvergreenDir;
+
 	$dbHost = "localhost";
 	$dbUsername = "shaun";
 	$dbPassword = "freedom";
 	$dbName = "ascensiontek";
-	$AscensionTekUrl = "http://localhost/ascensiontek/www";
-	$AscensionTekDir = "/Users/shaun/Dropbox/Projects/archive/AscensionTek/www";
 }
 else
 {
-	$baseUrl = "http://shaunmoss.com/archive/silvergreen";
-	$baseDir = "/var/aegir/platforms/shaunmoss.com/archive/silvergreen";
+  $smUrl = "http://shaunmoss.com";
+  $smDir = "/var/www/shaunmoss.com";
+
+  $ascensionTekUrl = "$smUrl/archive/ascensiontek";
+  $ascensionTekDir = "$smDir/archive/ascensiontek";
+
+  $SilvergreenUrl = "$smUrl/archive/silvergreen";
+  $SilvergreenDir = "$smDir/archive/silvergreen";
+
+  $baseUrl = $SilvergreenUrl;
+  $baseDir = $SilvergreenDir;
+
 	$dbHost = "localhost";
 	$dbUsername = "ascen4_shaun";
 	$dbPassword = "freedom";
 	$dbName = "ascen4_ascensiontek";
-	$AscensionTekUrl = "http://shaunmoss.com/archive/ascensiontek";
-  $AscensionTekDir = "/var/aegir/platforms/shaunmoss.com/archive/ascensiontek";
 }
-$EcovillagesUrl = "$AscensionTekUrl/bizplan/pe";
+
+$EcovillagesUrl = "$ascensionTekUrl/bizplan/pe";
 
 // standard include:
-include "$AscensionTekDir/lib/strings.php";
+include "$ascensionTekDir/lib/strings.php";
