@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -97,6 +97,6 @@ include("tpl/templateTop.php");
 	the cost of our energy production system and be
 	a good example of sustainable design. </p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

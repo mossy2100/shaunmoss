@@ -1,14 +1,7 @@
-<?
+<?php
 include("include/init.php");
 include("tpl/templateTop.php");
 ?>
-
-
-
-
-
-
-
 
 <h1>Geoengineering and the Law of Attraction</h1>
 
@@ -95,6 +88,6 @@ and DVD, the LOA has received a lot of attention.&nbsp;</p>
 	be kind and helpful to you.&nbsp; Teach others so
 	that you will be taught.</p>
 <p>&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -152,6 +152,6 @@ subscribe, at least to some degree, to this philosophy.</p>
 	to plenty of good quality food and water, no matter
 	what their situation, is a world at peace.</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

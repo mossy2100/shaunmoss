@@ -2,7 +2,7 @@
 </tr>
 <tr>
 <td height=20 class="menu">
-	<? require "menu.php"; ?>
+	<?php require "menu.php"; ?>
 </td>
 </tr>
 </table>

@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek Business Plan - Future Developments";
 $menuItem = "Business Plan";
@@ -278,6 +278,6 @@ would ever be hungry again.</p>
 		Property Development</a>. </p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

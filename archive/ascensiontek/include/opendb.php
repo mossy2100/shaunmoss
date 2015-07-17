@@ -1,4 +1,4 @@
-<?
+<?php
 // open a database connection:
 // (note that init.php must be included first)
 

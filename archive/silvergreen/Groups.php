@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -66,7 +66,7 @@ main roles include researching real estate and zoning,
 	        <li>Land rehabilitation </li>
 		</ol>
 	</li>
-    <li>Community and Social Sustainability group 
+    <li>Community and Social Sustainability group
     	<ol type='a'>
     		<li>Group building</li>
    		    <li>Principles and Vision documents</li>
@@ -89,6 +89,6 @@ main roles include researching real estate and zoning,
     </li>
 </ol>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

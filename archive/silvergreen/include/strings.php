@@ -1,4 +1,4 @@
-<?
+<?php
 // useful string functions:
 
 function println($str = '')
@@ -517,7 +517,7 @@ function convertHtmlEntities($str)
 	// convert a few specific html unicode character entities into similar ASCII characters
 	// (specifically: long hyphens, fancy quotes, bullets, ellipses, break tags)
 	$entities = array(	'&#8211;',	'&#8217;',	'&#8220;',	'&#8221;',	'&#8226;',	'&#8230;',	'<br>');
-	$ascii = array(		'-',		"'",		'“',		'”',		'*',		'...',		"\n");
+	$ascii = array(		'-',		"'",		'ï¿½',		'ï¿½',		'*',		'...',		"\n");
 	return str_replace($entities, $ascii, $str);
 }
 

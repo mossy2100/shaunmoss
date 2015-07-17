@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Silvergreen Ecovillage";
 $menuItem = "Ecovillages";
@@ -274,7 +274,7 @@ comes to about 0.8 hectares (8000m<sup>2</sup> or 2 acres) per
 	page</a>. </p>
 <p align="left">&nbsp;</p>
 <p align="left">&nbsp;</p>
-<p>&nbsp; </p>
-<?
+<p>&nbsp;</p>
+
+<?php
 include("tpl/templateBottom.php");
-?>

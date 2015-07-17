@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -140,6 +140,6 @@ being made collectively by owners and tenants.</p>
 	to the community centre, and the fun of living
 	in an ecovillage.</p>
 <p align="left">&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

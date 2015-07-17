@@ -1,4 +1,4 @@
-<?
+<?php
 include("tpl/templateTop.php");
 ?>
 
@@ -42,6 +42,6 @@ This shows text such as "Shaun is inviting you to switch to channel XXX" or "Sha
 </p>
 
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

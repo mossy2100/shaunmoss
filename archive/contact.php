@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Contact Info";
 $menuItem = "Contact";
@@ -31,7 +31,7 @@ include("tpl/templateTop.php");
 	<tr>
 		<th valign="top"><div align="right">Address </div></th>
 		<td valign="top"> 4/105 Waverley St,
-			Annerley, QLD 4103, 
+			Annerley, QLD 4103,
 			AUSTRALIA		</td>
 	</tr>
 	<tr>
@@ -45,6 +45,5 @@ include("tpl/templateTop.php");
 <p>&nbsp;</p>
 
 
-<?
+<?php
 include("tpl/templateBottom.php");
-?>

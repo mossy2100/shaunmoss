@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Sustainable and Space Property Development, Ecovillages, Steel-frame Homes, Environmental Technology";
 $menuItem = "Home";
@@ -76,6 +76,6 @@ this Solar System a nice place to live. </p>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

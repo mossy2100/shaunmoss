@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 include("check_login.php");
 ?>
@@ -26,7 +26,7 @@ function confirm_delete(person_id)
 <body>
 <h1>AscensionTek Administration Extranet</h1>
 <p><a href="person_edit.php">Add a new person</a></p>
-<?
+<?php
 // list subscribers:
 include("$baseDir/include/opendb.php");
 $sql = "select * from person order by name";
@@ -38,7 +38,7 @@ $rs = mysql_query($sql);
 <th>Email Address</th>
 <th>Home phone</th>
 <th>Mobile phone</th>
-<?
+<?php
 // mailing lists:
 $sql = "select * from mailing_list";
 $rs_ml = mysql_query($sql);
@@ -49,7 +49,7 @@ while ($rec_ml = mysql_fetch_assoc($rs_ml))
 ?>
 <th>Action</th>
 </tr>
-<?
+<?php
 while ($rec = mysql_fetch_assoc($rs))
 {
 	$person_id = $rec['person_id'];
@@ -73,7 +73,7 @@ while ($rec = mysql_fetch_assoc($rs))
 		}
 		println(" onclick='this.checked=!this.checked'></td>");
 	}
-	
+
 	println("<td><a href='person_edit.php?person_id=$person_id'>Edit</a> &nbsp; <a href='javascript:confirm_delete($person_id)'>Delete</a></td>");
 	println("</tr>");
 }
@@ -81,7 +81,7 @@ while ($rec = mysql_fetch_assoc($rs))
 </table>
 <p>&nbsp;</p>
 
-<?
+<?php
 // mailing lists:
 $sql = "select * from mailing_list";
 $rs_ml = mysql_query($sql);

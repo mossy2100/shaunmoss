@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -41,6 +41,6 @@ that we created ourselves.</p>
 <h2 align="left">&nbsp;</h2>
 <p align="left">&nbsp;</p>
 <p align="left">&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

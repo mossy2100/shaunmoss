@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="<?= $baseUrl ?>/tpl/silvergreen.css">
 </head>
 
-<body <?
+<body <?php
 if (substr($_SERVER['PHP_SELF'], -8)== "Maps.php")
 {
 	print("onload='load()' onunload='GUnload()'");

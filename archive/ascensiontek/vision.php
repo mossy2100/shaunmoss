@@ -1,10 +1,9 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Sustainable and Space Property Development, Ecovillages, Steel-frame Homes, Environmental Technology";
 $menuItem = "The Vision";
 include("tpl/templateTop.php");
 ?>
-
 
 <h1>The Vision </h1>
 <p>The goal for AscensionTek is to have as large a
@@ -173,6 +172,6 @@ include("tpl/templateTop.php");
 	obtain them.</p>
 <p>&nbsp; </p>
 <p>&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

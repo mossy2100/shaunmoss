@@ -1,4 +1,4 @@
-<?
+<?php
 include("tpl/templateTop.php");
 ?>
 
@@ -117,6 +117,6 @@ future. This is not about an imaginary world - this is about Mars, the
 next home for humanity. A game like this enables a large group of minds
 to create a shared vision of a future potential reality.</p>
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

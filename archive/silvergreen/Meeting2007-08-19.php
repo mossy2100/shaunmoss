@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -156,6 +156,6 @@ Horses: 3.5<br>
 Dogs and cats: 2.5<br>
 Meat animals: 2.5</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

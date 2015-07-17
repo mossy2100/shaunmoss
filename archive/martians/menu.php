@@ -1,4 +1,4 @@
-<?
+<?php
 $menuItems = array(
 	'Overview' => 'index.php',
 	'Concept History' => 'history.php',
@@ -18,7 +18,7 @@ $menuItems = array(
 	'Terraforming' => 'terraforming.php',
 	'Model' => 'model.php',
 	'User Interface' => 'ui.php',
-	'Chemistry' => 'chem.php', 
+	'Chemistry' => 'chem.php',
 );
 
 $links = array();

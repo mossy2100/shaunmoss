@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -34,7 +34,7 @@ function load() {
 }
 //]]>
 </script>
-  
+
 <h1>Maps</h1>
 
 <p>Australia/Oceania:</p>
@@ -58,6 +58,6 @@ function load() {
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

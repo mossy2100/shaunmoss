@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek Business Plan - Space Property Development";
 $menuItem = "Business Plan";
@@ -83,6 +83,6 @@ include("../tpl/templateTop.php");
 <p>More about these later.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

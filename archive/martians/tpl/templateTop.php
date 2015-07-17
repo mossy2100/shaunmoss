@@ -19,7 +19,7 @@
 	<br />
 	<img src='tpl/martians.png' width=560 height=65><br />
 	<br />
-	<? require "menu.php"; ?>
+	<?php require "menu.php"; ?>
 </td>
 </tr>
 <tr>

@@ -1,4 +1,4 @@
-<?
+<?php
 include("tpl/templateTop.php");
 ?>
 
@@ -40,6 +40,6 @@ include("tpl/templateTop.php");
 
 <p>&nbsp;</p>
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

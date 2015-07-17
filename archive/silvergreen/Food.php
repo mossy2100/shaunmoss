@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -46,7 +46,7 @@ required, the cost of which will have to be included
 in rates.</p>
 <p>&nbsp;</p>
 <h2>Storage and preparation</h2>
-<p>The community centre will include a coldroom 
+<p>The community centre will include a coldroom
 	and pantries for food storage, where residents
 	can store the harvests and collect their food supplies
 	as required.&nbsp; The
@@ -74,6 +74,6 @@ of wages would need to be covered - the cost of the
 actual food, water and electricity is already covered
 by rates.</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

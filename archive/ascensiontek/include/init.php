@@ -1,4 +1,4 @@
-<?
+<?php
 // init.php
 // Set configuration options for the site, and load standard libraries.
 

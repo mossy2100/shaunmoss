@@ -1,10 +1,9 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Shaun's Blog";
 $menuItem = "Shaun's Blog";
 include("tpl/templateTop.php");
 ?>
-
 
 <h1>Shaun's Blog</h1>
 <h2>Wednesday 12 September 2007 </h2>
@@ -343,7 +342,7 @@ that's climate positive.</p>
 	at the forefront of residential water management
 	technology - perhaps unsurprisingly.&nbsp; Because
 	of the need to begin generating income as soon
-	as possible, I am now toying with the idea of 
+	as possible, I am now toying with the idea of
 	starting a company that installs water systems,
 	since this is such a pressing problem in Australia
 	at this time, and hence a good business opportunity.&nbsp; There
@@ -413,6 +412,5 @@ that's climate positive.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
-?>

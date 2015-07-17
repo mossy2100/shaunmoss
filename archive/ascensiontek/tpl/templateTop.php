@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<?
+<?php
 if ($title == "")
 {
 	$title = "AscensionTek";
@@ -26,7 +26,7 @@ var ascensionTekUrl = '<?= $ascensionTekUrl ?>';
 
 function subscribe()
 {
-	// see if Ajax is supported:	
+	// see if Ajax is supported:
 	var xmlHttp = getXmlHttpObject();
 	if (xmlHttp)
 	{
@@ -94,7 +94,7 @@ Please wait...
 </form>
 </div> <!-- ends #header -->
 <div id="stars">
-<?
+<?php
 function menuItem($link, $text)
 {
 	global $menuItem;
@@ -110,13 +110,13 @@ function menuItem($link, $text)
 ?>
 <div id="left_column">
 	<ul id="nav">
-		<? include("$ascensionTekDir/menu.php"); ?>
+		<?php include("$ascensionTekDir/menu.php"); ?>
 	</ul>
 </div><!-- ends #left_column -->
 
 <div id="container">
 
-<?
+<?php
 if ($menuItem == "Home")
 {
 //	include("$ascensionTekDir/updates.php");

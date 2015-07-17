@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek - Green Steel Homes Business Plan - Sustainable Homes";
 $menuItem = "Business Plan";
@@ -37,6 +37,6 @@ Mountain</a> gutter mesh supplied by <a href="http://www.rainharvesting.com.au/"
 Harvesting</a>.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

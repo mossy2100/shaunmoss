@@ -1,4 +1,4 @@
-<?
+<?php
 include("tpl/templateTop.php");
 ?>
 
@@ -31,6 +31,6 @@ include("tpl/templateTop.php");
 
 
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek - Green Steel Homes Business Plan - Sustainable Homes";
 $menuItem = "Business Plan";
@@ -214,6 +214,6 @@ a business relationship, ideally someone who understands
 Actions</a>.</p>
 <p>&nbsp; </p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

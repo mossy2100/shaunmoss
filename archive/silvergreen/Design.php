@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -229,6 +229,6 @@ will therefore only be around 50-60 people, ideally
     	design goals of the ecovillage.</li>
 </ul>
 <p align="left">&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

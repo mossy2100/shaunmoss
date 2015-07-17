@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 // make sure the user is logged in:

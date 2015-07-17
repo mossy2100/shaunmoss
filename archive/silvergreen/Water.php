@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -98,6 +98,6 @@ include("tpl/templateTop.php");
 	leaching, water loss to evaporation, and the creation
 	of ponds or channels.</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

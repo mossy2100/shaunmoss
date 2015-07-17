@@ -1,4 +1,4 @@
-<?
+<?php
 // process the Silvergreen form:
 
 include("include/init.php");

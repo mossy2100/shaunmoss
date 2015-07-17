@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Software and Science Fiction";
 $menuItem = "Home";
@@ -26,7 +26,7 @@ several main areas:</p>
 </ol>
 
 <p>
-AscensionTek is created by Shaun Moss (that's me).  The company is not 
+AscensionTek is created by Shaun Moss (that's me).  The company is not
 "operational" as yet, but in a transitional/preparatory phase.  My current strategy is
 to continue to express and develop ideas, especially SolSys,
 until I can attract sufficient investment to establish a premises and
@@ -58,6 +58,5 @@ and VE (Virtual Environment) in which the players explore and
 participate in colonisation of the Solar System. <a
 	href='http://dev.solsys.net.au'>Visit the developer's website.</a></p>
 
-<?
+<?php
 include("tpl/templateBottom.php");
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek Business Plan - Overview";
 $menuItem = "Business Plan";
@@ -130,6 +130,6 @@ design, construction and operation of ecovillages</em>.</p>
 </div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

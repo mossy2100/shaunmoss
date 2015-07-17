@@ -1,12 +1,8 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek Business Plan";
 include("tpl/templateTop.php");
 ?>
-
-
-
-
 
 <h1>AscensionTek Philosophy</h1>
 
@@ -89,7 +85,7 @@ by our own thoughts.&nbsp; This
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>&nbsp; </p>
-<?
+<p>&nbsp;</p>
+
+<?php
 include("tpl/templateBottom.php");
-?>

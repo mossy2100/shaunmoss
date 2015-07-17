@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek Business Plans";
 $menuItem = "Business Plan";
@@ -44,6 +44,6 @@ rehabilitation services and training in garden maintenance.</p>
 <p>&nbsp;</p>
 <p>Please use the menu to the right to navigate the business plan.</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

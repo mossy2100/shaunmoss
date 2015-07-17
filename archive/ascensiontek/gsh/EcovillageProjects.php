@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek - Green Steel Homes Business Plan - Ecovillage Projects";
 $menuItem = "Business Plan";
@@ -168,6 +168,6 @@ for moonbases or marsbases.</strong></h3>
 System</a>.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

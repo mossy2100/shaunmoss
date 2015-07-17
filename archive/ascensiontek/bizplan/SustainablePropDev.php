@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek Business Plan - Sustainable Property Development";
 $menuItem = "Business Plan";
@@ -60,10 +60,10 @@ a marsbase.</p>
     <map name="Map">
    	    <area shape="rect" coords="20,38,210,210" href="../gsh/index.php">
    	    <area shape="rect" coords="246,38,437,210" href="../viriditas/index.php">
-    </map> 
+    </map>
 </p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Projects";
 $menuItem = "Projects";
@@ -46,6 +46,6 @@ include("tpl/templateTop.php");
 </table>
 <h3>&nbsp;</h3>
 <p>&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

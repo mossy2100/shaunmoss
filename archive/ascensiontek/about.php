@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 include("tpl/templateTop.php");
 ?>
@@ -86,7 +86,7 @@ provide solutions to our environmental problems on-planet.</p>
 	development company if I wanted to.</p>
 <p>From this point I began to assemble plans and ideas
 	for how this might be achieved.&nbsp; Having such
-	a varied background meant that it was not 
+	a varied background meant that it was not
 	obvious where to begin, and early plans centred
 	on multimedia and software development, and robotics.&nbsp; However,
 	with the increased media attention and global focus
@@ -159,6 +159,5 @@ and Products</h2>
 		software for robotics and automated systems.</li>
 </ul>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
-?>

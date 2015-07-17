@@ -1,4 +1,4 @@
-<?
+<?php
 include("tpl/templateTop.php");
 ?>
 
@@ -15,6 +15,6 @@ include("tpl/templateTop.php");
 </p>
 
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

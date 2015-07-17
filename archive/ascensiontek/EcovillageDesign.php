@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Ecovillage Design";
 $menuItem = "Ecovillages";
@@ -219,7 +219,7 @@ populations, from hundreds to thousands.</p>
 	are reasonably simple.&nbsp; The second stage will
 	be an aquaponics system, which is a combination
 	of hydroponics and aquaculture (fish farming).</p>
-<p>Large freezers will be available 
+<p>Large freezers will be available
 	for food storage, built into the commercial kitchen
 	which forms part of the community centre.</p>
 <p>&nbsp;</p>
@@ -360,6 +360,6 @@ populations, from hundreds to thousands.</p>
 	all these and more.</p>
 <p>&nbsp;</p>
 <p>&nbsp; </p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

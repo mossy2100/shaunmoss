@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Silvergreen Sign-up Form";
 $menuItem = "Ecovillages";
@@ -45,7 +45,7 @@ function checkForm()
 		alert("Please enter your name.");
 		return;
 	}
-	
+
 	var email_address = document.getElementById("email_address").value;
 	if (!validEmail(email_address))
 	{
@@ -60,6 +60,6 @@ function checkForm()
 </script>
 
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

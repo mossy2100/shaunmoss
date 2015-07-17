@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek - Green Steel Homes Business Plan - Business System";
 $menuItem = "Business Plan";
@@ -266,6 +266,6 @@ Click to enlarge (131kB PDF)</a></p>
 	Questions</a>.</p>
 <p>&nbsp;</p>
 <p>&nbsp; </p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

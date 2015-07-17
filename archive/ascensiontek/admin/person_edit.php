@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 include("check_login.php");
 ?>
@@ -12,7 +12,7 @@ include("check_login.php");
 </head>
 
 <body>
-<?
+<?php
 // list subscribers:
 include("$baseDir/include/opendb.php");
 $person_id = $_GET['person_id'];
@@ -48,7 +48,7 @@ if (!$new_person)
 <tr>
 <td valign="top">Mailing lists</td>
 <td>
-<?
+<?php
 	$sql = "select * from mailing_list";
 	$rs2 = mysql_query($sql);
 	while ($rec2 = mysql_fetch_assoc($rs2))

@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Sustainable Homes";
 $menuItem = "Sustainable Homes";
@@ -144,6 +144,6 @@ article on ecovillages</a></p>
 <p align="left">Proceed to: <a href="EcovillagesOurWay.php">Ecovillages
 		Our Way</a>.</p>
 <p align="left">&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

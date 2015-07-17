@@ -1,4 +1,4 @@
-<?
+<?php
 include("tpl/templateTop.php");
 ?>
 
@@ -32,6 +32,6 @@ include("tpl/templateTop.php");
 <p>My experience with VRML is that the interface is fairly slow and un-responsive, even with simple models, let alone huge virtual worlds.  The benefit is that VRML is an open standard, and the game may run in a browser.</p>
 
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

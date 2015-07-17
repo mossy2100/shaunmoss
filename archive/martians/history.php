@@ -1,4 +1,4 @@
-<?
+<?php
 include("tpl/templateTop.php");
 ?>
 
@@ -60,6 +60,6 @@ not providing a game environment or any rules. <i>Martians</i>, on the
 other hand, will be much more fun, enjoyable and interesting with this
 important feature.</p>
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

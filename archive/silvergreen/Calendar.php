@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -26,6 +26,6 @@ include("tpl/templateTop.php");
 <p><a href="Meeting2007-08-19.php">19 August 2007 at Shaun's place</a></p>
 <p>&nbsp; </p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

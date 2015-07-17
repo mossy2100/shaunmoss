@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -75,6 +75,6 @@ include("tpl/templateTop.php");
 	aesthetic theme across the ecovillage, to reduce
 	costs, and to improve systems integration.</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

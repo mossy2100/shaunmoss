@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Silvergreen - Thanks for Signing Up!";
 $menuItem = "Ecovillages";
@@ -13,6 +13,6 @@ include("tpl/templateTop.php");
 <p>&nbsp;</p>
 
 
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

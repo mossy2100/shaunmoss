@@ -1,4 +1,4 @@
-<?
+<?php
 // Add an email address to the subscriber database.
 // ================================================
 
@@ -64,7 +64,7 @@ else // already subscribed:
 
 if ($subscribedOk)
 {
-	// tell user:	
+	// tell user:
 	print("$email_address subscribed ok.");
 	// tell me:
 	mail("shaun@ascensiontek.com", "$email_address has subscribed to the AscensionTek Newsletter.", "");
@@ -76,4 +76,3 @@ else
 
 // clean up:
 mysql_close();
-?>

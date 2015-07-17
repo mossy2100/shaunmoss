@@ -1,12 +1,7 @@
-<?
+<?php
 include("include/init.php");
 include("tpl/templateTop.php");
 ?>
-
-
-
-
-
 
 <h1>Technology</h1>
 <p>When the company is established and adequate financial
@@ -128,6 +123,6 @@ include("tpl/templateTop.php");
 <p>&nbsp;</p>
 <h2>&nbsp;</h2>
 <p>&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

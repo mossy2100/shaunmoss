@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "Silvergreen - Home";
 $menuItem = "Home";
@@ -44,6 +44,6 @@ scraps given to the chooks.</p>
 	from the beginning, almost all communications about
 	this project will be electronic.</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("tpl/templateBottom.php");
 ?>

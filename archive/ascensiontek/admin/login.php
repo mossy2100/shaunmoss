@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 import_request_variables('p', 'x_');
 
@@ -8,7 +8,7 @@ if ($x_username == "shaun" && $x_pwd == "freedom35")
 	if ($x_request_uri == "")
 	{
 		$x_request_uri = "person_list.php";
-	}	
+	}
 	header("Location:$x_request_uri");
 }
 else

@@ -1,13 +1,7 @@
-<?
+<?php
 include("include/init.php");
 include("tpl/templateTop.php");
 ?>
-
-
-
-
-
-
 
 <h1>Shaun Moss </h1>
 
@@ -58,6 +52,6 @@ decided that being a part of that would be a cool thing
 	van, and  am therefore single.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

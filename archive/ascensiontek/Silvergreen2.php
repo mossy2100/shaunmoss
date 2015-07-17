@@ -1,4 +1,4 @@
-<?
+<?php
 include("include/init.php");
 $title = "AscensionTek - Silvergreen Ecovillage\"";
 $menuItem = "Ecovillages";
@@ -7,7 +7,9 @@ include("tpl/templateTop.php");
 
 <h1 align="center"><img src="images/Silvergreen.jpg" alt="Silvergreen" width="383" height="88"></h1>
 
-<? include("EcovillagesSubmenu.php"); ?>
+<?php
+include("EcovillagesSubmenu.php");
+?>
 
 <h1>Silvergreen Ecovillage</h1>
 <h2>Update 16-Jun-2007 </h2>
@@ -136,6 +138,6 @@ include("tpl/templateTop.php");
     	Development</li>
 </ul>
 <p>&nbsp;</p>
-<?
+
+<?php
 include("tpl/templateBottom.php");
-?>

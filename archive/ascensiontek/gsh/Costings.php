@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek - Green Steel Homes Business Plan - Information for Investors";
 $menuItem = "Business Plan";
@@ -219,6 +219,6 @@ Excel spreadsheet</a> for details.</p>
 	and declining from there.</p>
 <p>&nbsp;</p>
 <h3>&nbsp;</h3>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

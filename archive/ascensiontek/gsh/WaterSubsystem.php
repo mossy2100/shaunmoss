@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek - Green Steel Homes Business Plan - Sustainable Homes";
 $menuItem = "Business Plan";
@@ -237,7 +237,7 @@ the possibility of gutters catching fire.</p>
 	(&lt;1mm aperture) which prevents mosquitos and small
 	particles entering the tank.</p>
 <p>3.&nbsp; A <a href="http://purewater.net.au/whole_house.htm" target="_blank">Pure
-		Water Systems &quot;Whole of House&quot; carbon filter</a> removes 
+		Water Systems &quot;Whole of House&quot; carbon filter</a> removes
 
 
  &quot;chlorine, trihalomethanes, chemical pollutants
@@ -256,6 +256,6 @@ the possibility of gutters catching fire.</p>
 Projects</a>. </p>
 <p>&nbsp;</p>
 <p>&nbsp; </p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>

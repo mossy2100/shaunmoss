@@ -1,4 +1,4 @@
-<?
+<?php
 include("../include/init.php");
 $title = "AscensionTek - Downloads";
 $menuItem = "Downloads";
@@ -21,6 +21,6 @@ Convention, 2006, Washington DC:</strong></p>
 <p>PowerPoint presentation originally made for Grade 8 science classes in Mount Isa: <a href="<?= $smUrl ?>/dl/Shaun%20Moss%20-%20Living%20on%20Mars.ppt" class='int'>Living
 	on Mars</a> (4835kB) (2006)</p>
 <p>&nbsp;</p>
-<?
+<?php
 include("../tpl/templateBottom.php");
 ?>
