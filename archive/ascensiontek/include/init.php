@@ -8,17 +8,17 @@ session_start();
 $local = strpos($_SERVER['HTTP_HOST'], 'local') !== FALSE;
 if ($local)
 {
-  $baseUrl = "http://local.shaunmoss.com/archive/ascensiontek";
-  $baseDir = "/Users/shaun/Dropbox/PROJECTS/shaunmoss.com/shaunmoss6/archive/ascensiontek";
-
-  $ascensionTekUrl = $baseUrl;
-  $ascensionTekDir = $baseDir;
-
   $smUrl = "http://local.shaunmoss.com";
   $smDir = "/Users/shaun/Dropbox/PROJECTS/shaunmoss.com/shaunmoss6";
 
-  $SilvergreenDir = "$baseUrl/silvergreen";
-  $SilvergreenUrl = "$baseUrl/silvergreen";
+  $ascensionTekUrl = "$smUrl/archive/ascensiontek";
+  $ascensionTekDir = "$smDir/archive/ascensiontek";
+
+  $baseUrl = $ascensionTekUrl;
+  $baseDir = $ascensionTekDir;
+
+  $SilvergreenDir = "$smUrl/archive/silvergreen";
+  $SilvergreenUrl = "$smDir/archive/silvergreen";
 
   // Database settings:
   $dbHost = "localhost";
@@ -67,4 +67,3 @@ function subdomainDir($subdomain)
 
 // standard include:
 include("$baseDir/lib/strings.php");
-?>
