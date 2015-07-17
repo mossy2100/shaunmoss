@@ -29,7 +29,7 @@ if ($local)
 else
 {
   $smUrl = "http://shaunmoss.com";
-  $smDir = "/var/aegir/platforms/shaunmoss.com";
+  $smDir = "/var/www/shaunmoss.com";
 
   $ascensionTekUrl = "$smUrl/archive/ascensiontek";
   $ascensionTekDir = "$smDir/archive/ascensiontek";
