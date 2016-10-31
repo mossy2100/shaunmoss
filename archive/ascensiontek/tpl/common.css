@@ -1,335 +1,385 @@
 body {
-	background: url(steel.jpg);
-	margin: 0px;
-	padding: 8px;
+  background: url(steel.jpg);
+  margin: 0px;
+  padding: 8px;
 }
+
 body, h1, h2, h3, h4, h5, h6, td, th, li, p, a, input, select, textarea, button, center {
-	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
-	color: black;
+  font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+  color: black;
 }
+
 body, td, th, li, p, a, input, select, textarea, button, center {
-	font-size: 12px;
+  font-size: 12px;
 }
+
 /* headings */
 h1 {
-	color: Red;
-	font-size: 17px;
-	padding-top: 25px;
+  color: Red;
+  font-size: 17px;
+  padding-top: 25px;
 }
+
 h2 {
-	color: RoyalBlue;
-	font-size: 15px;
-	margin: 0px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	font-weight: 700;
+  color: RoyalBlue;
+  font-size: 15px;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 700;
 }
+
 h2 strong {
-	display: block;
-	color: #999;
-	font-weight: 300;
+  display: block;
+  color: #999;
+  font-weight: 300;
 }
+
 h3 {
-	color: Silver;
-	font-size: 13px;
+  color: Silver;
+  font-size: 13px;
 }
+
 p {
-	line-height: 125%;
-	margin: 0px 0px 7px;
+  line-height: 125%;
+  margin: 0px 0px 7px;
 }
+
 a {
-	color: Navy;
+  color: Navy;
 }
+
 a:hover {
-	color: RoyalBlue;
+  color: RoyalBlue;
 }
+
 hr {
-	color: Red;
-	background-color: Red;
-	height: 2px;
-	border: 0px;
-	text-align: left;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
+  color: Red;
+  background-color: Red;
+  height: 2px;
+  border: 0px;
+  text-align: left;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
+
 #logo {
 }
+
 #logo a img {
-	border: 0px none;
-	float: left;
+  border: 0px none;
+  float: left;
 }
+
 #header {
-	margin: 0px 0px 0px 200px;
-	padding: 0px;
-	background: #000000 url(stars.jpg) repeat-x;
-	height: 135px;
-	border-top: 4px solid #555;
-	border-right: 4px solid #CCC;
-	border-bottom: 4px solid #EEE;
-	border-left: 4px solid #888;
-	color: White;
+  margin: 0px 0px 0px 200px;
+  padding: 0px;
+  background: #000000 url(stars.jpg) repeat-x;
+  height: 135px;
+  border-top: 4px solid #555;
+  border-right: 4px solid #CCC;
+  border-bottom: 4px solid #EEE;
+  border-left: 4px solid #888;
+  color: White;
 }
+
 #header h1 {
-	height: 105px;
-	padding-top: 30px;
-	margin: 0px 0px -75px;
-	color: #FF0000;
-	font-size: 17px;
-	background:  url(earth_top.jpg) no-repeat 0px 0px;
-	text-align: center;
-	font-weight: 600;
+  height: 105px;
+  padding-top: 30px;
+  margin: 0px 0px -75px;
+  color: #FF0000;
+  font-size: 17px;
+  background: url(earth_top.jpg) no-repeat 0px 0px;
+  text-align: center;
+  font-weight: 600;
 }
+
 #header form {
-	background:  url(moon2.jpg) no-repeat right top;
-	height: 135px;
+  background: url(moon2.jpg) no-repeat right top;
+  height: 135px;
 }
+
 #divSubscribe {
-	width: 400px;
-	margin-right: auto;
-	margin-left: auto;
-	border: 0px none;
-	padding: 0px;
-	text-align: center;
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0px none;
+  padding: 0px;
+  text-align: center;
 }
+
 #divSubscribe p {
-	margin: 0px;
-	padding: 0px;
-	display: block;
-	color: white;
-	font-size: 11px;
-	font-weight: 600;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
 }
+
 #divSubscribe fieldset {
-	width: 330px;
-	height: 19px;
-	padding: 0px;
-	border: 0px;
-	margin: 5px auto 0px;
-	display: block;
+  width: 330px;
+  height: 19px;
+  padding: 0px;
+  border: 0px;
+  margin: 5px auto 0px;
+  display: block;
 }
+
 #divSubscribe fieldset input {
-	width: 211px;
-	height: 14px;
-	padding: 1px 5px 1px;
-	border: 2px solid RoyalBlue;
-	margin: 0px 5px 0px 0px;
-	background-color: Black;
-	color: White;
-	font-weight: bold;
-	font-size: 11px;
-	display: inline;
-	float: left;
+  width: 211px;
+  height: 14px;
+  padding: 1px 5px 1px;
+  border: 2px solid RoyalBlue;
+  margin: 0px 5px 0px 0px;
+  background-color: Black;
+  color: White;
+  font-weight: bold;
+  font-size: 11px;
+  display: inline;
+  float: left;
 }
+
 #divSubscribe fieldset input:hover {
-	border: 2px solid Red;
+  border: 2px solid Red;
 }
+
 #divSubscribe a {
-	display: block;
-	float: right;
-	width: 100px;
-	height: 17px;
-	padding-top: 3px;
-	margin: 0px;
-	color: #FFFFFF;
-	background: url(shortBtn.gif) no-repeat 0px 0px;
-	font-weight: 700;
-	font-size: 11px;
-	text-decoration: none;
+  display: block;
+  float: right;
+  width: 100px;
+  height: 17px;
+  padding-top: 3px;
+  margin: 0px;
+  color: #FFFFFF;
+  background: url(shortBtn.gif) no-repeat 0px 0px;
+  font-weight: 700;
+  font-size: 11px;
+  text-decoration: none;
 }
+
 #divSubscribe a:hover {
-	background: url(shortBtn.gif) no-repeat 0px -80px;
+  background: url(shortBtn.gif) no-repeat 0px -80px;
 }
+
 #divWait {
-	display: none;
-	color: white;
-	font-size: 11px;
-	font-weight: 600;
-	margin-right: auto;
-	margin-left: auto;
-	border: 0px none;
-	padding: 0px;
-	text-align: center;
+  display: none;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0px none;
+  padding: 0px;
+  text-align: center;
 }
+
 #left_column {
-	width: 193px;
-	background: url(earth_left2.jpg) no-repeat left top;
-	padding-top: 82px;
-	float: left;
+  width: 193px;
+  background: url(earth_left2.jpg) no-repeat left top;
+  padding-top: 82px;
+  float: left;
 }
+
 #stars {
-	background:  url(stars_left.jpg) repeat-y 0px 0px;
-	clear: both;
+  background: url(stars_left.jpg) repeat-y 0px 0px;
+  clear: both;
 }
+
 #nav {
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
 }
+
 #nav li {
-	width: 175px;
-	margin-left: 10px;
-	margin-bottom: 2px;
+  width: 175px;
+  margin-left: 10px;
+  margin-bottom: 2px;
 }
+
 #nav li a {
-	width: 161px;
-	padding-left: 14px;
-	background:  url(nav_bckgnd.gif) no-repeat 0px 0px;
-	display: block;
-	font-size: 11px;
-	text-decoration: none;
-	color: #FFFFFF;
-	padding-top: 3px;
-	padding-bottom: 7px;
-	font-weight: 700;
+  width: 161px;
+  padding-left: 14px;
+  background: url(nav_bckgnd.gif) no-repeat 0px 0px;
+  display: block;
+  font-size: 11px;
+  text-decoration: none;
+  color: #FFFFFF;
+  padding-top: 3px;
+  padding-bottom: 7px;
+  font-weight: 700;
 }
+
 #container {
-	margin-left: 200px;
-	background: #FFFFFF;
-	border-top: 4px solid #555;
-	border-right: 4px solid #CCC;
-	border-bottom: 4px solid #EEE;
-	border-left: 4px solid #888;
-	min-height: 600px;
-	padding-left: 3%;
+  margin-left: 200px;
+  background: #FFFFFF;
+  border-top: 4px solid #555;
+  border-right: 4px solid #CCC;
+  border-bottom: 4px solid #EEE;
+  border-left: 4px solid #888;
+  min-height: 600px;
+  padding-left: 3%;
 }
+
 #nav li a:hover, #nav li a:active, #nav li a:focus {
-	background:  url(nav_bckgnd.gif) no-repeat 0px -80px;
+  background: url(nav_bckgnd.gif) no-repeat 0px -80px;
 }
+
 #nav li a.current {
-	background:  url(nav_bckgnd.gif) no-repeat 0px -80px;
+  background: url(nav_bckgnd.gif) no-repeat 0px -80px;
 }
+
 #mars {
-	width: 199px;
-	height: 158px;
-	margin-top: -158px;
-	background: url(mars2.jpg) no-repeat left bottom;
-	clear: both;
-	float: left;
+  width: 199px;
+  height: 158px;
+  margin-top: -158px;
+  background: url(mars2.jpg) no-repeat left bottom;
+  clear: both;
+  float: left;
 }
+
 #content ul li {
-	font-size: small;
+  font-size: small;
 }
+
 #content {
-	margin-right: 25%;
+  margin-right: 25%;
 }
+
 #right_column {
-	width: 20%;
-	padding: 1%;
-	border: 2px solid RoyalBlue;
-	margin: 1%;
-	float: right;
+  width: 20%;
+  padding: 1%;
+  border: 2px solid RoyalBlue;
+  margin: 1%;
+  float: right;
 }
+
 #right_column h1 {
-	font-size: 12px;
-	padding: 0px 0px 5px;
-	margin: 0px;
+  font-size: 12px;
+  padding: 0px 0px 5px;
+  margin: 0px;
 }
+
 #right_column h2 {
-	font-size: 11px;
-	padding: 10px 0px 0px;
-	margin: 0px;
+  font-size: 11px;
+  padding: 10px 0px 0px;
+  margin: 0px;
 }
+
 #right_column p {
-	padding: 0px;
-	margin: 0px;
-}	
+  padding: 0px;
+  margin: 0px;
+}
+
 #right_column ul {
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
 }
+
 #right_column li {
-	margin-bottom: 2px;
-	margin-left: 10px;
-	font-size: 10px;
+  margin-bottom: 2px;
+  margin-left: 10px;
+  font-size: 10px;
 }
+
 #right_column li a {
-	background: url(bullet.gif) no-repeat 0px 2px;
-	padding-left: 12px;
-	color: Navy;
-	font-size: 10px;
+  background: url(bullet.gif) no-repeat 0px 2px;
+  padding-left: 12px;
+  color: Navy;
+  font-size: 10px;
 }
+
 /* the active and focus subselectors create the highlight effect when tabbing through the page - for accessibility */
 #right_column li a:visited {
-	color: Silver;
-}
-#right_column li a:hover, #right_column li a:active, #right_column li a:focus {
-	background: url(bullet.gif) no-repeat 0px -88px;
-	color: RoyalBlue;
-}
-div.whitebox
-{
-	width: 70%;
-	margin: auto;
-	padding: 15px;
-	border: solid 2px RoyalBlue;
-}
-div.whitebox p {
-	padding: 0px;
-}
-div.whitebox li {
-	padding-bottom: 10px;
-}
-div.whitebox h1 {
-	padding-top: 0px;
-}
-table.blueTable, table.blueTable td, table.blueTable th {
-	border: solid 2px RoyalBlue;
-	border-collapse: collapse;
-	padding: 10px;
-}
-a.img {
-	padding: 0px;
-	margin: 0px;
-	text-decoration: none;
-}
-#form1 a {
-	display: block;
-	width: 75px;
-	height: 17px;
-	padding-top: 3px;
-	margin: 0px;
-	color: Black;
-	background: url(btn75wide_whiteBg.gif) no-repeat 0px 0px;
-	font-weight: 700;
-	font-size: 11px;
-	text-decoration: none;
-	text-align: center;
-}
-#form1 a:hover {
-	background: url(btn75wide_whiteBg.gif) no-repeat 0px -80px;
-}
-.highlight {
-	font-weight:bold;
-	background-color:yellow;
+  color: Silver;
 }
 
+#right_column li a:hover, #right_column li a:active, #right_column li a:focus {
+  background: url(bullet.gif) no-repeat 0px -88px;
+  color: RoyalBlue;
+}
+
+div.whitebox {
+  width: 70%;
+  margin: auto;
+  padding: 15px;
+  border: solid 2px RoyalBlue;
+}
+
+div.whitebox p {
+  padding: 0px;
+}
+
+div.whitebox li {
+  padding-bottom: 10px;
+}
+
+div.whitebox h1 {
+  padding-top: 0px;
+}
+
+table.blueTable, table.blueTable td, table.blueTable th {
+  border: solid 2px RoyalBlue;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+a.img {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+}
+
+#form1 a {
+  display: block;
+  width: 75px;
+  height: 17px;
+  padding-top: 3px;
+  margin: 0px;
+  color: Black;
+  background: url(btn75wide_whiteBg.gif) no-repeat 0px 0px;
+  font-weight: 700;
+  font-size: 11px;
+  text-decoration: none;
+  text-align: center;
+}
+
+#form1 a:hover {
+  background: url(btn75wide_whiteBg.gif) no-repeat 0px -80px;
+}
+
+.highlight {
+  font-weight: bold;
+  background-color: yellow;
+}
 
 #SolSysBanner {
-	background-color: black;
-	color: white;
-	font-weight: bold;
-	padding: 20px;
-	width: 550px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  width: 550px;
 }
 
 #SolSysBanner a {
-	color: yellow;
+  color: yellow;
 }
 
 #SolSysBanner a:hover {
-	color: gold;
+  color: gold;
 }
 
 .msg {
-	background-color:silver;
-	border:solid 1px royalblue;
-	padding:20px;
+  background-color: silver;
+  border: solid 1px royalblue;
+  padding: 20px;
 }
 
 table.redline, table.redline td, table.redline th {
-	border: solid 1px red;
-	border-collapse: collapse;
+  border: solid 1px red;
+  border-collapse: collapse;
 }
 

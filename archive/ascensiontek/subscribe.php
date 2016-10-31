@@ -67,7 +67,7 @@ if ($subscribedOk)
 	// tell user:
 	print("$email_address subscribed ok.");
 	// tell me:
-	mail("shaun@ascensiontek.com", "$email_address has subscribed to the AscensionTek Newsletter.", "");
+	mail("shaun@astromultimedia.com", "$email_address has subscribed to the AscensionTek Newsletter.", "");
 }
 else
 {

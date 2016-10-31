@@ -17,7 +17,7 @@ if ($local) {
   $dbName = "ascensiontek";
 }
 else {
-  $smUrl = "http://shaunmoss.com";
+  $smUrl = "https://shaunmoss.com";
   $smDir = "/var/www/shaunmoss.com/htdocs";
 
   // Database settings:

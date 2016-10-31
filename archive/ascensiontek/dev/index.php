@@ -26,7 +26,7 @@ have found the developers' website (which is pretty much all there is at this st
 as possible on this website, and we will produce some strategies for building it.</p>
 
 <p>Enjoy the site. If you have any questions about the project, just <a
-	href='<?= htmlEntitiesAll("mailto:shaunmoss@yahoo.com.au") ?>'>email me</a>.</p>
+	href='<?= htmlEntitiesAll("mailto:shaun@astromultimedia.com") ?>'>email me</a>.</p>
 
 <br>
 
