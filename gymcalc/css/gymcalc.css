@@ -2,12 +2,8 @@ body, input, select, button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  font-size: 1.25em;
-}
-
-input, select, button, form, div, span, h4 {
-  font-size: 1em;
+body, input, select, button, form, div, span, h4 {
+  font-size: 20px;
 }
 
 #gymcalc-form div {
