@@ -1,8 +1,7 @@
-(($) => {
-
-  const plateMasses = [1.25, 2.5, 5, 10, 20];
-  const barMasses = [8, 20, 30];
-  let dbMasses;
+($ => {
+  const plateWeights = [1.25, 2.5, 5, 10, 20, 25];
+  let dumbbellWeights;
+  const percentages = [50, 70, 100, 90, 80];
 
   /**
    * Array sorting function for an ascending numerical sort.
@@ -19,148 +18,307 @@
   }
 
   /**
-   * Build the dumbbell masses array.
+   * Build the dumbbell weights array.
    */
-  function setupDbMasses() {
-    dbMasses = new Set();
+  function setupDbWeights() {
+    dumbbellWeights = new Set();
     for (let i = 1; i <= 10; i++) {
-      dbMasses.add(i);
+      dumbbellWeights.add(i);
     }
     for (let i = 8; i <= 20; i += 2) {
-      dbMasses.add(i);
+      dumbbellWeights.add(i);
     }
     for (let i = 12.5; i <= 60; i += 2.5) {
-      dbMasses.add(i);
+      dumbbellWeights.add(i);
     }
     // Convert to array, sorted by value.
-    dbMasses = [...dbMasses];
-    dbMasses.sort(sortAsc);
+    dumbbellWeights = [...dumbbellWeights];
+    dumbbellWeights.sort(sortAsc);
   }
 
   /**
-   * Sort the bar masses and create the selector.
+   * Calculate the best combination of plates, given the specified parameters.
+   *
+   * @param {float} idealTotal
+   *   The ideal total weight.
+   * @param {float} bar
+   *   The bar weight for a barbell, or starting resistance for a machine.
+   * @param {bool} split
+   *   If the weight of the plates needs to be divided in half.
+   *
+   * @return {object}
+   *   The closest weight possible and the plate weights to select.
    */
-  function setupBarMasses() {
-    barMasses.sort(sortAsc);
-    const $barMassSelect = $('#bar-mass');
-    barMasses.forEach(value => {
-      $barMassSelect.append($('<option>', {value: value, text: value}));
-    });
-  }
+  function calcPlates(idealTotal, bar, split) {
+    // Calculate the split factor.
+    const factor = split ? 2 : 1;
 
-  /**
-   * Calculate the best combination of plates, given the goal mass, selected bar, and available plates.
-   */
-  function calcClosestMass(idealTotal, bar) {
-    // Can't go lower than the bar mass.
+    // Can't go lower than the bar weight.
     if (idealTotal <= bar) {
-      return {closest: bar, eachEnd: 0, plates: []};
+      return { closest: bar, platesWeight: 0, plates: [] };
     }
 
-    // Calculate the ideal mass of plates for one end of the bar.
-    const idealPlates = (idealTotal - bar) / 2;
+    // Calculate the ideal weight of plates for one end of the bar.
+    const idealPlates = (idealTotal - bar) / factor;
 
     // Calculate closest matching plate setup.
-    let plates = [];
+    const plates = [];
     let remainder = idealPlates;
     let closestBelow = 0;
-    let plateMassesDesc = plateMasses.slice(0);
-    plateMassesDesc.sort(sortDesc);
-    let plateFound;
-    let plateMass;
-    let abovePlates;
+    const plateWeightsDesc = plateWeights.slice(0);
+    plateWeightsDesc.sort(sortDesc);
+    let plateFound = true;
+    let plateWeight;
 
-    // Calculate the closest mass below the ideal mass.
-    while (true) {
-      // Look for the largest plate with a mass less than the remainder.
+    // Calculate the closest weight below the ideal weight.
+    while (plateFound) {
+      // Look for the largest plate with a weight less than the remainder.
       plateFound = false;
-      for (plateMass of plateMassesDesc) {
-        if (plateMass <= remainder) {
+      for (let i = 0; i < plateWeightsDesc.length; i++) {
+        plateWeight = plateWeightsDesc[i];
+        if (plateWeight <= remainder) {
           // Plate found.
-          remainder -= plateMass;
-          closestBelow += plateMass;
-          plates.push(plateMass);
+          remainder -= plateWeight;
+          closestBelow += plateWeight;
+          plates.push(plateWeight);
           // Stop looking.
           plateFound = true;
           break;
         }
-      }
-      if (!plateFound) {
-        break;
       }
     }
 
     // If we have an exact match, done.
     let closest;
     if (closestBelow === idealPlates) {
-      closest = closestBelow * 2 + bar;
-      return {closest, eachEnd: closestBelow, plates};
+      closest = closestBelow * factor + bar;
+      return { closest, platesWeight: closestBelow, plates };
     }
 
-    // Add the smallest plate to find the next mass above the ideal.
-    const smallestPlate = plateMasses[0];
+    // Add the smallest plate to find the next weight above the ideal.
+    const smallestPlate = plateWeights[0];
     const closestAbove = closestBelow + smallestPlate;
     const diffBelow = idealPlates - closestBelow;
     const diffAbove = closestAbove - idealPlates;
 
-    // If the above mass is closer to the ideal, or if it's 50-50, take the above mass.
+    // If the above weight is closer to the ideal, or if it's 50-50, take the above weight.
     if (diffAbove <= diffBelow) {
-      // Recalculate to find the best plate mix for closest mass above.
-      return calcClosestMass(closestAbove * 2 + bar, bar);
+      // Recalculate to find the best plate mix for closest weight above.
+      return calcPlates(closestAbove * factor + bar, bar, split);
     }
 
-    // Below mass is closer to the ideal.
-    closest = closestBelow * 2 + bar;
-    return {closest, eachEnd: closestBelow, plates};
+    // Below weight is closer to the ideal.
+    closest = closestBelow * factor + bar;
+    return { closest, platesWeight: closestBelow, plates };
   }
 
   /**
-   * Calculate and display the results.
+   * Calculate the best combination of plates, given the specified parameters.
+   *
+   * @param {float} idealTotal
+   *   The ideal total weight.
+   *
+   * @return {float}
+   *   The dumbbell weight that, if doubled, would be closest to the ideal.
    */
-  function calcMasses() {
-    // Declare vars.
-    const bar = parseFloat($('#bar-mass').val());
-    const $results = $('#results');
-    let closestMasses = [];
-    let $result;
-    let p;
-    let platesDesc;
-    let strPlatesDesc;
-    let ideal;
+  function calcDumbbell(idealTotal) {
+    const idealDumbbellWeight = idealTotal / 2;
 
-    // Calculate the ideal masses.
-    let idealMasses = [];
-    idealMasses[10] = parseFloat($('#goal-mass').val());
-    for (let i = 5; i < 10; i++) {
-      idealMasses[i] = idealMasses[10] * i / 10;
+    // Can't go lower than the smallest dumbbell weight.
+    if (idealDumbbellWeight <= dumbbellWeights[0]) {
+      return dumbbellWeights[0];
     }
 
-    // Calculate the closest we can get with the available plates.
+    let closestAbove;
+    let i;
+    for (i = 0; i < dumbbellWeights.length; i++) {
+      if (dumbbellWeights[i] === idealDumbbellWeight) {
+        // Found exact match.
+        return dumbbellWeights[i];
+      }
+      if (dumbbellWeights[i] > idealDumbbellWeight) {
+        // Found lowest-weight dumbbell with weight above the ideal.
+        closestAbove = dumbbellWeights[i];
+        break;
+      }
+    }
+
+    // Get the dumbbell with the highest weight lower than the ideal.
+    const closestBelow = dumbbellWeights[i - 1];
+
+    // Find out which dumbbell is closer in weight to the ideal.
+    const diffBelow = idealDumbbellWeight - closestBelow;
+    const diffAbove = closestAbove - idealDumbbellWeight;
+
+    // If the above weight is closer to the ideal, or if it's 50-50, take the above weight.
+    if (diffAbove <= diffBelow) {
+      return closestAbove;
+    }
+
+    // Below weight is closer to the ideal.
+    return closestBelow;
+  }
+
+  /* ===================================================================================================================
+   * Error functions.
+   */
+
+  /**
+   * Display an error.
+   *
+   * @param {string} msg
+   *   The error message.
+   */
+  function setError(msg) {
+    $('#error').html(msg).show();
+  }
+
+  /**
+   * Clear any error.
+   */
+  function clearError() {
+    $('#error').html('').hide();
+  }
+
+  /* ===================================================================================================================
+   * Calculation functions.
+   */
+
+  /**
+   * Calculate and display the results.
+   *
+   * @param {bool} split
+   *   If two equal sets of plates are needed.
+   */
+  function platesCalc(split) {
+    let $result;
+    let plateWeight;
+    let platesHtml;
+    let idealWeight;
+    let closestPlates;
+
+    const goal = parseFloat($('#goal-weight').val());
+    if (!goal) {
+      setError('Please set goal weight.');
+      return;
+    }
+
+    const bar = parseFloat($('#bar-weight').val());
+    const $results = $('#results');
 
     // Reset the results.
     $results.html('');
 
-    for (let i = 10; i >= 5; i--) {
-      closestMasses[i] = calcClosestMass(idealMasses[i], bar);
-      p = i * 10;
+    // Calculate the closest we can get with the available plates.
+    percentages.forEach(percent => {
+      // Calculate ideal weight rounded to two decimal places (nearest 10 grams).
+      idealWeight = Math.round(goal * percent) / 100;
 
-      // Get the strings we need.
-      ideal = Math.round(idealMasses[i] * 100) / 100;
-      platesDesc = closestMasses[i].plates;
-      platesDesc.forEach((v, k) => {
-        platesDesc[k] = `<span class="plate plate-${v.toString().replace('.', '-')}">${v}</span>`;
-      });
-      strPlatesDesc = platesDesc.join('');
+      closestPlates = calcPlates(idealWeight, bar, split);
 
-      $result = $('' +
-        `<div id="mass-${p}" class="result-row">` +
-        `<h4>${p}% of goal</h4>` +
-        `<div class="ideal"><label>Ideal</label><span>${ideal} kg</span></div>` +
-        `<div class="closest"><label>Closest</label><span>${closestMasses[i].closest} kg</span></div>` +
-        `<div class="closest"><label>Each end</label><span>${closestMasses[i].eachEnd} kg</span></div>` +
-        `<div class="plates"><label>Plates</label><span>${strPlatesDesc}</span></div>` +
-        '</div>');
+      // Generate HTML for the plates.
+      platesHtml = '';
+      for (let i = 0; i < closestPlates.plates.length; i++) {
+        plateWeight = closestPlates.plates[i];
+        platesHtml += `<span class="plate plate-${plateWeight.toString().replace('.', '-')}">${plateWeight}</span>`;
+      }
+
+      // Add the result.
+      $result = $(`
+        <div class="result-row">
+          <h4>${percent}% of goal</h4>
+          <div class="ideal"><label>Ideal</label><span>${idealWeight} kg</span></div>
+          <div class="closest"><label>Closest</label><span>${closestPlates.closest} kg</span></div>
+          <div class="closest"><label>Total plates</label><span>${closestPlates.platesWeight} kg</span></div>
+          <div class="plates"><label>Plates setup</label><span>${platesHtml}</span></div>
+        </div>`);
       $result.appendTo($results);
+    });
+  }
+
+  function dumbbellCalc() {
+    let idealWeight;
+    let closestDumbbell;
+    let $result;
+
+    const goal = parseFloat($('#goal-weight').val());
+    const $results = $('#results');
+
+    // Reset the results.
+    $results.html('');
+
+    // Calculate the closest we can get with the available plates.
+    percentages.forEach(percent => {
+      // Calculate ideal weight rounded to two decimal places (nearest 10 grams).
+      idealWeight = Math.round(goal * percent) / 100;
+      closestDumbbell = calcDumbbell(idealWeight);
+      // Add the result.
+      $result = $(`
+        <div class="result-row">
+          <h4>${percent}% of goal</h4>
+          <div class="ideal"><label>Ideal</label><span>${idealWeight} kg</span></div>
+          <div class="closest"><label>Closest</label><span>${closestDumbbell * 2} kg</span></div>
+          <div class="closest"><label>Each arm</label><span>${closestDumbbell} kg</span></div>
+        </div>`);
+      $result.appendTo($results);
+    });
+  }
+
+  /**
+   * Change the form to suit the exercise type, whenever it changes.
+   */
+  function modifyForm() {
+    const exerciseType = $('#exercise-type').val();
+    const $goalWeightWrapper = $('#goal-weight-wrapper');
+    const $goalWeightLabel = $goalWeightWrapper.find('label');
+    const $barWeightWrapper = $('#bar-weight-wrapper');
+    const $barWeightLabel = $barWeightWrapper.find('label');
+
+    // Determine if bar weight should be visible.
+    if (exerciseType === 'dumbbell' || exerciseType === 'machine-pin') {
+      $barWeightWrapper.hide();
+    } else {
+      $barWeightWrapper.show();
+      // Set the label.
+      if (exerciseType === 'barbell') {
+        $barWeightLabel.html('Bar weight');
+      } else {
+        $barWeightLabel.html('Starting resistance');
+      }
+    }
+
+    // Update goal weight label.
+    if (exerciseType === 'dumbbell' || exerciseType === 'machine-plate-bi') {
+      $goalWeightLabel.html('Goal weight (total, both arms)');
+    } else {
+      $goalWeightLabel.html('Goal weight');
+    }
+  }
+
+  /**
+   * Do the calculation.
+   */
+  function calculate() {
+    const exerciseType = $('#exercise-type').val();
+    switch (exerciseType) {
+      case 'barbell':
+      case 'machine-plate-bi':
+        platesCalc(true);
+        break;
+
+      case 'machine-plate-uni':
+        platesCalc(false);
+        break;
+
+      case 'dumbbell':
+        dumbbellCalc();
+        break;
+
+      case 'machine-pin':
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -168,12 +326,12 @@
    * Initialise the form.
    */
   function init() {
-    setupDbMasses();
-    setupBarMasses();
-    $('#calc').click(calcMasses);
+    setupDbWeights();
+    $('#exercise-type').change(modifyForm);
+    $('#calc').click(calculate);
+    $('input, select').click(clearError);
   }
 
   // Initialise when document ready.
   $(init);
-
 })(jQuery);

@@ -1,29 +1,109 @@
+/***********************************************************************************************************************
+ * Elements.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
 body, input, select, button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
 body, input, select, button, form, div, span, h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
-#gymcalc-form div {
-  padding: 10px;
+body {
+  padding: 0.5rem;
+  background-color: #eee;
 }
 
-label {
-  display: inline-block;
-  width: 120px;
+h1 {
+  margin: 0;
+  color: green;
+  text-align: center;
 }
 
-#goal-mass,
-#bar-mass {
-  box-sizing: border-box;
-  width: 120px;
+h2 {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1rem;
+  font-style: italic;
+  color: limegreen;
 }
 
 h4 {
   margin: 0;
 }
+
+label {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 5px;
+  color: royalblue;
+}
+
+/***********************************************************************************************************************
+ * Form elements, general.
+ */
+
+select {
+  width: 100%;
+}
+
+button {
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: orange;
+  border-color: darkorange;
+  color: white;
+  width: 100%;
+}
+
+button:hover {
+  background-color: darkorange;
+}
+
+input[type="number"] {
+  width: 50%;
+}
+
+/***********************************************************************************************************************
+ * Layout.
+ */
+
+#wrapper {
+  width: 320px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.field {
+  padding: 0.5rem 0;
+}
+
+.control {
+  padding: 0;
+}
+
+#goal-weight,
+#bar-weight {
+  box-sizing: border-box;
+}
+
+#error {
+  display: none;
+  background-color: #FFDFDA;
+  border: solid 1px red;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 0.25rem;
+}
+
+/***********************************************************************************************************************
+ * Results.
+ */
 
 .result-row {
   padding: 10px;
@@ -36,12 +116,6 @@ h4 {
   padding: 5px;
 }
 
-.plates label {
-  height: 90px;
-  line-height: 90px;
-  float: left;
-}
-
 .plate {
   color: white;
   writing-mode: vertical-rl;
@@ -52,37 +126,45 @@ h4 {
   margin-right: 1px;
 }
 
-.plate-20 {
-  background-color: purple;
-  height: 90px;
+.plate-25 {
+  background-color: #c259e9;
+  height: 100px;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.plate-10 {
-  background-color: blue;
-  height: 80px;
+.plate-20 {
+  background-color: #0065ff;
+  height: 90px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.plate-5 {
-  background-color: forestgreen;
-  height: 70px;
+.plate-10 {
+  background-color: #2dbf2d;
+  height: 80px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.plate-5 {
+  color: black;
+  background-color: yellow;
+  height: 70px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .plate-2-5 {
   background-color: orange;
   height: 60px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .plate-1-25 {
   background-color: red;
   height: 50px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
