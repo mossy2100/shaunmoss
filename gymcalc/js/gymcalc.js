@@ -197,16 +197,18 @@
     let idealWeight;
     let closestPlates;
 
+    // Get the goal weight.
     const goal = parseFloat($('#goal-weight').val());
     if (!goal) {
       setError('Please set goal weight.');
       return;
     }
 
+    // Get the bar weight.
     const bar = parseFloat($('#bar-weight').val());
-    const $results = $('#results');
 
     // Reset the results.
+    const $results = $('#results');
     $results.html('');
 
     // Calculate the closest we can get with the available plates.
@@ -241,10 +243,15 @@
     let closestDumbbell;
     let $result;
 
+    // Get the goal weight.
     const goal = parseFloat($('#goal-weight').val());
-    const $results = $('#results');
+    if (!goal) {
+      setError('Please set goal weight.');
+      return;
+    }
 
     // Reset the results.
+    const $results = $('#results');
     $results.html('');
 
     // Calculate the closest we can get with the available plates.
