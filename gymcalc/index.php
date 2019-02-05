@@ -45,7 +45,7 @@ header('Cache-Control: max-age=0');
       </div>
     </div>
     <div id="goal-weight-wrapper" class="field">
-      <label for="goal-weight">Goal weight</label>
+      <label for="goal-weight">Goal weight (both arms/legs)</label>
       <div class="control">
         <input id="goal-weight" type="number" min="0" max="500" step="0.1">
         <span>kg</span>
@@ -57,6 +57,10 @@ header('Cache-Control: max-age=0');
         <input id="bar-weight" type="number" min="0" max="100" step="0.1">
         <span>kg</span>
       </div>
+    </div>
+    <div id="addon-weights-wrapper" class="field">
+      <label for="addon-weights">Available add-on weights</label>
+      <div id="addon-weights"></div>
     </div>
     <div class="field">
       <button type="button" id="calc">Calculate</button>

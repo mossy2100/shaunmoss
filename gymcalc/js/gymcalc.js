@@ -1,10 +1,34 @@
 ($ => {
-  const plateWeights = [1.25, 2.5, 5, 10, 20, 25];
+  // const plateWeights = [0.25, 0.5, 1, 1.25, 2, 2.5, 5, 7.5, 10, 15, 20, 25];
+  const plateWeights = [1.25, 2.5, 5, 10, 15, 20, 25];
   let dumbbellWeights;
   const percentages = [50, 70, 100, 90, 80];
+  const pinWeights = [5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90];
+  const addonWeights = [2.25, 2.25, 2.5, 2.5];
+
+  /**
+   * Round a number off to 2 decimal places.
+   *
+   * @param {float} x
+   *   The initial number.
+   *
+   * @return {float}
+   *   The rounded-off number.
+   */
+  function roundTo2decimalplaces(x) {
+    return Math.round(x * 100) / 100;
+  }
 
   /**
    * Array sorting function for an ascending numerical sort.
+   *
+   * @param {float} a
+   *   The first number to compare.
+   * @param {float} b
+   *   The second number to compare.
+   *
+   * @return {float}
+   *   The difference between the two parameters.
    */
   function sortAsc(a, b) {
     return a - b;
@@ -12,6 +36,14 @@
 
   /**
    * Array sorting function for a descending numerical sort.
+   *
+   * @param {float} a
+   *   The first number to compare.
+   * @param {float} b
+   *   The second number to compare.
+   *
+   * @return {float}
+   *   The difference between the two parameters.
    */
   function sortDesc(a, b) {
     return b - a;
@@ -37,6 +69,48 @@
   }
 
   /**
+   * Create the checkboxes so the user can select which add-on plates are avaialble.
+   */
+  function setupAddonWeights() {
+    const $addonWeights = $('#addon-weights');
+    addonWeights.forEach(value => {
+      const $checkboxWrapper = $('<div>');
+      $checkboxWrapper.append(`<input type="checkbox" value="${value}">`);
+      $checkboxWrapper.append(`<label>${value}</label>`);
+      $addonWeights.append($checkboxWrapper);
+    });
+  }
+
+  /* ===================================================================================================================
+   * Error functions.
+   */
+
+  /**
+   * Display an error.
+   *
+   * @param {string} msg
+   *   The error message.
+   */
+  function setError(msg) {
+    $('#error')
+      .html(msg)
+      .show();
+  }
+
+  /**
+   * Clear any error.
+   */
+  function clearError() {
+    $('#error')
+      .html('')
+      .hide();
+  }
+
+  /* ===================================================================================================================
+   * Calculation functions.
+   */
+
+  /**
    * Calculate the best combination of plates, given the specified parameters.
    *
    * @param {float} idealTotal
@@ -59,7 +133,7 @@
     }
 
     // Calculate the ideal weight of plates for one end of the bar.
-    const idealPlates = (idealTotal - bar) / factor;
+    const idealPlates = roundTo2decimalplaces((idealTotal - bar) / factor);
 
     // Calculate closest matching plate setup.
     const plates = [];
@@ -122,7 +196,7 @@
    *   The dumbbell weight that, if doubled, would be closest to the ideal.
    */
   function calcDumbbell(idealTotal) {
-    const idealDumbbellWeight = idealTotal / 2;
+    const idealDumbbellWeight = roundTo2decimalplaces(idealTotal / 2);
 
     // Can't go lower than the smallest dumbbell weight.
     if (idealDumbbellWeight <= dumbbellWeights[0]) {
@@ -159,30 +233,248 @@
     return closestBelow;
   }
 
-  /* ===================================================================================================================
-   * Error functions.
-   */
-
   /**
-   * Display an error.
+   * Return all combinations of a bag of items plus one item selected from a box of items.
    *
-   * @param {string} msg
-   *   The error message.
+   * Thus, if there are four items in the box, there will be four combinations in the result.
+   *
+   * @param {Array} bag
+   *   The current selected items.
+   * @param {Array} box
+   *   Other items that we can select from.
+   *
+   * @return {Array}
+   *   All combinations of items from bag and box.
    */
-  function setError(msg) {
-    $('#error').html(msg).show();
+  function getCombinations(bag, box) {
+    let newBag;
+    let newBox;
+    let boxLeft;
+    let boxRight;
+    let combinations = [];
+    let item;
+
+    // Terminating condition.
+    if (box.length === 0) {
+      // Only one possible combination.
+      return [bag];
+    }
+
+    // First option is to choose none from the box.
+    combinations.push(bag);
+
+    // Second set of options is to choose one item from the box and add it to the bag.
+    // i.e.
+    // combinations[1] = combinations(bag + box[0], box - box[0]);
+    // combinations[2] = combinations(bag + box[1], box - box[1]);
+    // etc.
+
+    // Loop through the items in the box.
+    for (let j = 0; j < box.length; j++) {
+      // Copy the arrays.
+      newBag = bag.slice();
+      newBox = box.slice();
+
+      // Get the current item.
+      item = box[j];
+
+      // Remove the item from the box.
+      if (j === 0) {
+        // Remove item from start of box.
+        item = newBox.shift();
+      } else if (j === box.length - 1) {
+        // Remove item from end of box.
+        item = newBox.pop();
+      } else {
+        // Remove item from middle of array.
+        boxLeft = box.slice(0, j);
+        boxRight = box.slice(j + 1);
+        newBox = boxLeft.concat(boxRight);
+      }
+
+      // Put the item in the bag in sort order.
+      newBag.push(item);
+      newBag.sort(sortAsc);
+
+      // Get all new combinations.
+      combinations = combinations.concat(getCombinations(newBag, newBox));
+    }
+
+    return combinations;
   }
 
   /**
-   * Clear any error.
+   * Calculate the best combination of pin setting plus add-on plates.
+   *
+   * @param {float} idealTotal
+   *   The ideal total weight.
+   * @param {Array} availableAddOnWeights
+   *   The available addonWeights
+   *
+   * @return {object}
+   *   Object containing information about the ideal weight, closest weight, pin setting, and add-on weights.
    */
-  function clearError() {
-    $('#error').html('').hide();
+  function calcMachine(idealTotal, availableAddOnWeights) {
+    // Get all combinations of add-on weights.
+    const addonCombinations = getCombinations([], availableAddOnWeights);
+    const strAddonCombinations = [];
+    addonCombinations.forEach(value => {
+      strAddonCombinations.push(JSON.stringify(value));
+    });
+    const strUniqueAddonCombinations = [...new Set(strAddonCombinations)];
+    const uniqueAddonCombinations = [];
+    strUniqueAddonCombinations.forEach(value => {
+      uniqueAddonCombinations.push(JSON.parse(value));
+    });
+
+    // Get all combinations of pin weight plus add-on weights.
+    const combinations = [];
+    let totalWeight;
+    let addons;
+    let addonsWeight;
+    pinWeights.forEach(pinWeight => {
+      for (let i = 0; i < uniqueAddonCombinations.length; i++) {
+        addons = uniqueAddonCombinations[i];
+        addonsWeight = addons.reduce((total, value) => total + value, 0);
+        totalWeight = pinWeight + addonsWeight;
+        combinations.push({totalWeight, pinWeight, addonsWeight, addons});
+      }
+    });
+
+    // Sort the combinations by total weight.
+    combinations.sort((a, b) => {
+      if (a.totalWeight === b.totalWeight) {
+        return a.addonsWeight - b.addonsWeight;
+      }
+      return a.totalWeight - b.totalWeight;
+    });
+
+    // Remove unnecessary combinations.
+    const combinations2 = [];
+    let current = 0;
+    for (let i = 0; i < combinations.length; i++) {
+      if (combinations[i].totalWeight > current) {
+        // Add it.
+        combinations2.push(combinations[i]);
+        // Update the current weight.
+        current = combinations[i].totalWeight;
+      }
+    }
+
+    // If the lowest weight is greater than or equal to the ideal, use that.
+    if (combinations2[0].totalWeight >= idealTotal) {
+      return combinations2[0];
+    }
+
+    // If the highest weight is less than or equal to the ideal, use that.
+    if (combinations2[combinations2.length - 1].totalWeight <= idealTotal) {
+      return combinations2[combinations2.length - 1];
+    }
+
+    // Find closest total weights below and above the ideal.
+    let j;
+    for (j = 0; j < combinations2.length; j++) {
+      // Check for exact match.
+      if (combinations2[j].totalWeight === idealTotal) {
+        return combinations2[j];
+      }
+      // Check for closest above.
+      if (combinations2[j].totalWeight > idealTotal) {
+        break;
+      }
+    }
+
+    // Find out which weight is closer to the ideal, the one below or the one above.
+    const closestBelow = combinations2[j - 1].totalWeight;
+    const closestAbove = combinations2[j].totalWeight;
+    const diffBelow = idealTotal - closestBelow;
+    const diffAbove = closestAbove - idealTotal;
+
+    // If the above weight is closer to the ideal, or if it's 50-50, take the above weight.
+    if (diffAbove <= diffBelow) {
+      return combinations2[j];
+    }
+
+    // Below weight is closer to the ideal.
+    return combinations2[j - 1];
   }
 
   /* ===================================================================================================================
-   * Calculation functions.
+   * Functions to display results.
    */
+
+  /**
+   * Calculate hue from 0 to 360, assuming that the minimum plate weight it 0.25 kg and the maximum is 50 kg.
+   *
+   * @param {float} weight
+   *   The plate or add-on weight.
+   *
+   * @return {float}
+   *   The appropriate hue for that plate. Red for small, violet for big.
+   */
+  // function calcColors(weight) {
+  //   const colorMap = [
+  //     { min: 0, max: 1, 'background-color': '#000000', color: 'white' },
+  //     { min: 1, max: 2, 'background-color': '#ff0000', color: 'white' },
+  //     { min: 2, max: 5, 'background-color': '#ffa500', color: 'white' },
+  //     { min: 5, max: 10, 'background-color': '#ffff00', color: 'black' },
+  //     { min: 10, max: 20, 'background-color': '#2dbf2d', color: 'white' },
+  //     { min: 20, max: 25, 'background-color': '#0065ff', color: 'white' },
+  //     { min: 25, max: 50, 'background-color': '#c259e9', color: 'white' }
+  //   ];
+  //   for (let i = 0; i < colorMap.length; i++) {
+  //     if (weight >= colorMap[i].min && weight < colorMap[i].max) {
+  //       return {
+  //         color: colorMap[i].color,
+  //         'background-color': colorMap[i]['background-color']
+  //       };
+  //     }
+  //   }
+  // }
+
+  /**
+   * Create the plates-wrapper element.
+   *
+   * @param {Array} plates
+   *   The plate weights.
+   * @param {string} label
+   *   The label text.
+   *
+   * @return {Object}
+   *   jQuery object representing the new element.
+   */
+  function createPlatesWrapperElement(plates, label) {
+    const $platesWrapper = $(`<div class="plates-wrapper">`);
+    $platesWrapper.append(`<label>${label}</label>`);
+    const $plates = $(`<span class="plates">`);
+    if (!plates.length) {
+      $plates.html('None');
+    } else {
+      // Get the maximum height needed.
+      let maxHeight = 0;
+      plates.forEach(plateWeight => {
+        const height = plateWeight * 2 + 50;
+        if (height > maxHeight) {
+          maxHeight = height;
+        }
+      });
+      // Create elements for the plate weights.
+      plates.forEach(plateWeight => {
+        const plateClass = `plate-${plateWeight.toString().replace('.', '-')}`;
+        const $plate = $(`<span class="plate ${plateClass}">${plateWeight}</span>`);
+        const height = plateWeight * 2 + 50;
+        const margin = roundTo2decimalplaces((maxHeight - height) / 2);
+        $plate.css({
+          height: `${height}px`,
+          'margin-top': `${margin}px`,
+          'margin-bottom': `${margin}px`
+        });
+        $plates.append($plate);
+      });
+    }
+    $platesWrapper.append($plates);
+    return $platesWrapper;
+  }
 
   /**
    * Calculate and display the results.
@@ -190,13 +482,7 @@
    * @param {bool} split
    *   If two equal sets of plates are needed.
    */
-  function platesCalc(split) {
-    let $result;
-    let plateWeight;
-    let platesHtml;
-    let idealWeight;
-    let closestPlates;
-
+  function showPlates(split) {
     // Get the goal weight.
     const goal = parseFloat($('#goal-weight').val());
     if (!goal) {
@@ -205,7 +491,8 @@
     }
 
     // Get the bar weight.
-    const bar = parseFloat($('#bar-weight').val());
+    let bar = $('#bar-weight').val();
+    bar = bar === '' ? 0 : parseFloat(bar);
 
     // Reset the results.
     const $results = $('#results');
@@ -214,31 +501,25 @@
     // Calculate the closest we can get with the available plates.
     percentages.forEach(percent => {
       // Calculate ideal weight rounded to two decimal places (nearest 10 grams).
-      idealWeight = Math.round(goal * percent) / 100;
+      const idealWeight = roundTo2decimalplaces(goal * (percent / 100));
 
-      closestPlates = calcPlates(idealWeight, bar, split);
-
-      // Generate HTML for the plates.
-      platesHtml = '';
-      for (let i = 0; i < closestPlates.plates.length; i++) {
-        plateWeight = closestPlates.plates[i];
-        platesHtml += `<span class="plate plate-${plateWeight.toString().replace('.', '-')}">${plateWeight}</span>`;
-      }
+      const { closest, platesWeight, plates } = calcPlates(idealWeight, bar, split);
 
       // Add the result.
-      $result = $(`
-        <div class="result-row">
-          <h4>${percent}% of goal</h4>
-          <div class="ideal"><label>Ideal</label><span>${idealWeight} kg</span></div>
-          <div class="closest"><label>Closest</label><span>${closestPlates.closest} kg</span></div>
-          <div class="closest"><label>Total plates</label><span>${closestPlates.platesWeight} kg</span></div>
-          <div class="plates"><label>Plates setup</label><span>${platesHtml}</span></div>
-        </div>`);
-      $result.appendTo($results);
+      const $row = $(`<div class="result-row">`);
+      const setup = split ? `[${platesWeight}]=${bar}=[${platesWeight}]` : `${bar}=[${platesWeight}]`;
+      $row.append(`
+        <h4>${percent}% of goal</h4>
+        <div class="ideal"><label>Ideal</label><span>${idealWeight} kg</span></div>
+        <div class="closest"><label>Closest</label><span>${closest} kg</span></div>
+        <div class="setup"><label>Setup</label><span>${setup}</span></div>`);
+      const $platesWrapper = createPlatesWrapperElement(plates, 'Plates');
+      $row.append($platesWrapper);
+      $results.append($row);
     });
   }
 
-  function dumbbellCalc() {
+  function showDumbbells() {
     let idealWeight;
     let closestDumbbell;
     let $result;
@@ -257,7 +538,7 @@
     // Calculate the closest we can get with the available plates.
     percentages.forEach(percent => {
       // Calculate ideal weight rounded to two decimal places (nearest 10 grams).
-      idealWeight = Math.round(goal * percent) / 100;
+      idealWeight = roundTo2decimalplaces(goal * (percent / 100));
       closestDumbbell = calcDumbbell(idealWeight);
       // Add the result.
       $result = $(`
@@ -265,9 +546,52 @@
           <h4>${percent}% of goal</h4>
           <div class="ideal"><label>Ideal</label><span>${idealWeight} kg</span></div>
           <div class="closest"><label>Closest</label><span>${closestDumbbell * 2} kg</span></div>
-          <div class="closest"><label>Each arm</label><span>${closestDumbbell} kg</span></div>
+          <div class="dumbbell"><label>Dumbbells</label><span>${closestDumbbell} kg</span></div>
         </div>`);
       $result.appendTo($results);
+    });
+  }
+
+  function showMachineCombinations() {
+    // Get the goal weight.
+    const goal = parseFloat($('#goal-weight').val());
+    if (!goal) {
+      setError('Please set goal weight.');
+      return;
+    }
+
+    // Reset the results.
+    const $results = $('#results');
+    $results.html('');
+
+    // Get the available add-on weights.
+    const availableAddonWeights = [];
+    $('#addon-weights input[type="checkbox"]').each((i, el) => {
+      const $el = $(el);
+      if ($el.is(':checked')) {
+        availableAddonWeights.push(parseFloat($el.val()));
+      }
+    });
+
+    // Calculate the closest we can get with the available plates.
+    percentages.forEach(percent => {
+      // Calculate ideal weight rounded to two decimal places (nearest 10 grams).
+      const idealWeight = roundTo2decimalplaces(goal * (percent / 100));
+
+      // Get the best combination of pin setting plus weights.
+      const { totalWeight, pinWeight, addons } = calcMachine(idealWeight, availableAddonWeights);
+      addons.sort(sortDesc);
+
+      // Add the result.
+      const $row = $(`<div class="result-row">`);
+      $row.append(`
+        <h4>${percent}% of goal</h4>
+        <div class="ideal"><label>Ideal</label><span>${idealWeight} kg</span></div>
+        <div class="closest"><label>Closest</label><span>${totalWeight} kg</span></div>
+        <div class="dumbbell"><label>Pin weight</label><span>${pinWeight} kg</span></div>`);
+      const $addonsWrapper = createPlatesWrapperElement(addons, 'Add-ons');
+      $row.append($addonsWrapper);
+      $results.append($row);
     });
   }
 
@@ -276,10 +600,9 @@
    */
   function modifyForm() {
     const exerciseType = $('#exercise-type').val();
-    const $goalWeightWrapper = $('#goal-weight-wrapper');
-    const $goalWeightLabel = $goalWeightWrapper.find('label');
     const $barWeightWrapper = $('#bar-weight-wrapper');
     const $barWeightLabel = $barWeightWrapper.find('label');
+    const $addonWeightsWrapper = $('#addon-weights-wrapper');
 
     // Determine if bar weight should be visible.
     if (exerciseType === 'dumbbell' || exerciseType === 'machine-pin') {
@@ -294,12 +617,16 @@
       }
     }
 
-    // Update goal weight label.
-    if (exerciseType === 'dumbbell' || exerciseType === 'machine-plate-bi') {
-      $goalWeightLabel.html('Goal weight (total, both arms)');
+    // Determine if add-on plates should be visible.
+    if (exerciseType === 'machine-pin') {
+      $addonWeightsWrapper.show();
     } else {
-      $goalWeightLabel.html('Goal weight');
+      $addonWeightsWrapper.hide();
     }
+
+    // Reset the results.
+    const $results = $('#results');
+    $results.html('');
   }
 
   /**
@@ -310,18 +637,19 @@
     switch (exerciseType) {
       case 'barbell':
       case 'machine-plate-bi':
-        platesCalc(true);
+        showPlates(true);
         break;
 
       case 'machine-plate-uni':
-        platesCalc(false);
+        showPlates(false);
         break;
 
       case 'dumbbell':
-        dumbbellCalc();
+        showDumbbells();
         break;
 
       case 'machine-pin':
+        showMachineCombinations();
         break;
 
       default:
@@ -334,6 +662,8 @@
    */
   function init() {
     setupDbWeights();
+    setupAddonWeights();
+    modifyForm();
     $('#exercise-type').change(modifyForm);
     $('#calc').click(calculate);
     $('input, select').click(clearError);

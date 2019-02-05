@@ -11,7 +11,7 @@ body, input, select, button {
 }
 
 body, input, select, button, form, div, span, h4 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 body {
@@ -30,6 +30,7 @@ h2 {
   font-size: 1rem;
   font-style: italic;
   color: limegreen;
+  text-align: center;
 }
 
 h4 {
@@ -37,7 +38,6 @@ h4 {
 }
 
 label {
-  font-size: 16px;
   display: block;
   margin-bottom: 5px;
   color: royalblue;
@@ -54,14 +54,14 @@ select {
 button {
   border-radius: 5px;
   padding: 0.5rem;
-  background-color: orange;
-  border-color: darkorange;
+  background-color: royalblue;
+  border-color: navy;
   color: white;
   width: 100%;
 }
 
 button:hover {
-  background-color: darkorange;
+  background-color: navy;
 }
 
 input[type="number"] {
@@ -101,6 +101,16 @@ input[type="number"] {
   margin-bottom: 0.25rem;
 }
 
+#addon-weights label {
+  color: black;
+  display: inline;
+}
+
+#addon-weights div {
+  display: inline;
+  padding: 5px;
+}
+
 /***********************************************************************************************************************
  * Results.
  */
@@ -126,45 +136,73 @@ input[type="number"] {
   margin-right: 1px;
 }
 
+/* Standard Olympic colors are used for the 5, 10, 15, 20, and 25. */
 .plate-25 {
-  background-color: #c259e9;
-  height: 100px;
-  margin-top: 0;
-  margin-bottom: 0;
+  color: white;
+  background-color: red;
 }
 
 .plate-20 {
-  background-color: #0065ff;
-  height: 90px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  color: white;
+  background-color: #0055ff;
+}
+
+.plate-15 {
+  color: black;
+  background-color: yellow;
 }
 
 .plate-10 {
-  background-color: #2dbf2d;
-  height: 80px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  color: white;
+  background-color: #00cc00;
+}
+
+.plate-7-5 {
+  color: white;
+  background-color: blueviolet;
 }
 
 .plate-5 {
   color: black;
-  background-color: yellow;
-  height: 70px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  background-color: white;
 }
 
 .plate-2-5 {
-  background-color: orange;
-  height: 60px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  color: white;
+  background-color: deeppink;
+}
+
+.plate-2-25 {
+  color: white;
+  background-color: darkorange;
+}
+
+.plate-2 {
+  color: white;
+  background-color: #80aaff;
 }
 
 .plate-1-25 {
-  background-color: red;
-  height: 50px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  color: white;
+  background-color: #ffbf80;
+}
+
+.plate-1 {
+  color: black;
+  background-color: #90ee90;
+}
+
+.plate-0-75 {
+  color: white;
+  background-color: #b587e0;
+}
+
+.plate-0-5 {
+  color: white;
+  background-color: black;
+}
+
+.plate-0-25 {
+  color: black;
+  background-color: pink;
 }
