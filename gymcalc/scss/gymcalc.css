@@ -1,26 +1,19 @@
 /***********************************************************************************************************************
  * Base font sizes for different devices.
  */
-body {
-  font-size: 16px; }
-
-@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-  font-size: 32px; }
 /***********************************************************************************************************************
  * Elements.
  */
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-size: 40px; }
+
+body {
+  padding: 0.5em;
+  background-color: #eee; }
 
 body, input, select, button {
   font-family: Arial, Helvetica, sans-serif; }
-
-p, input, select, button, form, div, span, label, h4 {
-  font-size: 1em; }
-
-body {
-  padding: 5px;
-  background-color: #eee; }
 
 h1 {
   margin: 0;
@@ -50,7 +43,8 @@ label {
 select, input[type="number"] {
   border: solid 1px gray;
   height: 2em;
-  width: 100%; }
+  width: 100%;
+  font-size: 1.5rem; }
 
 input[type="number"] {
   width: 50%; }
@@ -93,13 +87,16 @@ button:hover {
   background-color: #FFDFDA;
   border: solid 1px red;
   border-radius: 1em;
-  padding: 5px 1em;
+  padding: 0.5em 1em;
   margin-bottom: 0.25em; }
 
 #addon-weights label {
   color: black;
   display: inline;
-  padding: 0 5px 0 0; }
+  padding: 0 0.5em 0 0; }
+
+#pin-stack-wrapper {
+  display: none; }
 
 /***********************************************************************************************************************
  * Results.
@@ -111,14 +108,14 @@ button:hover {
 
 .result-row h4,
 .result-row div {
-  padding: 5px; }
+  padding: 0.5em; }
 
 .plate {
   color: black;
   writing-mode: vertical-rl;
   text-orientation: sideways;
   text-align: center;
-  font-size: 14px;
+  font-size: 1rem;
   margin-left: 1px;
   margin-right: 1px; }
 
