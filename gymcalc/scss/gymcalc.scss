@@ -63,15 +63,16 @@ input[type="number"] {
 
 button {
   border-radius: 1px;
-  padding: 1em;
+  padding: 0.5em;
   background-color: royalblue;
   border-color: navy;
   color: white;
   width: 100%;
-}
+  font-size: 1.5em;
 
-button:hover {
-  background-color: navy;
+  &:hover {
+    background-color: navy;
+  }
 }
 
 /***********************************************************************************************************************
@@ -93,6 +94,10 @@ button:hover {
 
 .field {
   padding: 1em 0;
+
+  span {
+    font-size: 1.5em;
+  }
 }
 
 .control {
@@ -130,7 +135,10 @@ button:hover {
 .result-row {
   padding: 1em;
   background-color: #eee;
-  margin-bottom: 1em;
+
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
 }
 
 .result-row h4,
@@ -143,7 +151,7 @@ button:hover {
   writing-mode: vertical-rl;
   text-orientation: sideways;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-left: 1px;
   margin-right: 1px;
 }
@@ -159,7 +167,7 @@ is used.
   color: white;
 }
 
-.plate22_5 {
+.plate-22_5 {
   background-color: #0099e5;
   color: white;
 }

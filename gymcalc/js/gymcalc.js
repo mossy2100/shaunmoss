@@ -1,5 +1,10 @@
 ($ => {
-  const plateWeights = [1.25, 2.5, 5, 10, 20, 25];
+  // const plateWeights = [1.25, 2.5, 5, 10, 20, 25];
+  const plateWeights = [
+    0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25,
+    0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5,
+    5, 7.5, 10, 12.5, 15, 17.5, 20, 22.5, 25
+  ];
   let dumbbellWeights;
   const percentages = [50, 70, 100, 90, 80];
   const pinStacks = [
@@ -189,7 +194,9 @@
     // If the above weight is closer to the ideal, or if it's 50-50, take the above weight.
     if (diffAbove <= diffBelow) {
       // Recalculate to find the best plate mix for closest weight above.
-      return calcPlates(closestAbove * factor + bar, bar, split);
+      // return calcPlates(closestAbove * factor + bar, bar, split);
+      closest = closestAbove * factor + bar;
+      return { closest, platesWeight: closestBelow, plates };
     }
 
     // Below weight is closer to the ideal.
@@ -440,7 +447,7 @@
       // Get the maximum height needed.
       let maxHeight = 0;
       plates.forEach(plateWeight => {
-        const height = plateWeight * 2 + 50;
+        const height = (plateWeight + 25) * 8;
         if (height > maxHeight) {
           maxHeight = height;
         }
@@ -449,7 +456,7 @@
       plates.forEach(plateWeight => {
         const plateClass = `plate-${plateWeight.toString().replace('.', '_')}`;
         const $plate = $(`<span class="plate ${plateClass}">${plateWeight}</span>`);
-        const height = plateWeight * 2 + 50;
+        const height = (plateWeight + 25) * 8;
         const margin = roundTo2decimalplaces((maxHeight - height) / 2);
         $plate.css({
           height: `${height}px`,

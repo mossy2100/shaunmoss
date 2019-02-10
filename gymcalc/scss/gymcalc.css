@@ -51,14 +51,14 @@ input[type="number"] {
 
 button {
   border-radius: 1px;
-  padding: 1em;
+  padding: 0.5em;
   background-color: royalblue;
   border-color: navy;
   color: white;
-  width: 100%; }
-
-button:hover {
-  background-color: navy; }
+  width: 100%;
+  font-size: 1.5em; }
+  button:hover {
+    background-color: navy; }
 
 /***********************************************************************************************************************
  * Layout.
@@ -74,6 +74,8 @@ button:hover {
     width: 20em; } }
 .field {
   padding: 1em 0; }
+  .field span {
+    font-size: 1.5em; }
 
 .control {
   padding: 0; }
@@ -103,8 +105,9 @@ button:hover {
  */
 .result-row {
   padding: 1em;
-  background-color: #eee;
-  margin-bottom: 1em; }
+  background-color: #eee; }
+  .result-row:not(:last-child) {
+    margin-bottom: 1em; }
 
 .result-row h4,
 .result-row div {
@@ -115,7 +118,7 @@ button:hover {
   writing-mode: vertical-rl;
   text-orientation: sideways;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-left: 1px;
   margin-right: 1px; }
 
@@ -129,7 +132,7 @@ is used.
   background-color: #cd0000;
   color: white; }
 
-.plate22_5 {
+.plate-22_5 {
   background-color: #0099e5;
   color: white; }
 

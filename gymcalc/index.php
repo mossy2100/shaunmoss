@@ -14,10 +14,10 @@ header('Cache-Control: max-age=0');
 
   <title>GymCalc</title>
 
-  <link rel="stylesheet" type="text/css" href="scss/gymcalc.css?<?= time() ?>">
+  <link rel="stylesheet" type="text/css" href="scss/gymcalc.css">
 
   <script language="JavaScript" src="js/jquery-3.3.1.min.js"></script>
-  <script language="JavaScript" src="js/gymcalc.js?<?= time() ?>"></script>
+  <script language="JavaScript" src="js/gymcalc.js"></script>
 
 </head>
 <body>
