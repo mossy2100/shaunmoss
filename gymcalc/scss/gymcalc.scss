@@ -1,0 +1,272 @@
+/***********************************************************************************************************************
+ * Base font sizes for different devices.
+ */
+body {
+  font-size: 16px;
+}
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  font-size: 32px;
+}
+
+/***********************************************************************************************************************
+ * Elements.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body, input, select, button {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p, input, select, button, form, div, span, label, h4 {
+  font-size: 1em;
+}
+
+body {
+  padding: 5px;
+  background-color: #eee;
+}
+
+h1 {
+  margin: 0;
+  color: green;
+  text-align: center;
+  font-size: 3em;
+}
+
+h2 {
+  margin: 5px 0 1em 0;
+  font-size: 2em;
+  font-style: italic;
+  color: limegreen;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+h4 {
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: royalblue;
+}
+
+select, input[type="number"] {
+  border: solid 1px gray;
+  height: 2em;
+  width: 100%;
+}
+
+input[type="number"] {
+  width: 50%;
+}
+
+button {
+  border-radius: 1px;
+  padding: 1em;
+  background-color: royalblue;
+  border-color: navy;
+  color: white;
+  width: 100%;
+}
+
+button:hover {
+  background-color: navy;
+}
+
+/***********************************************************************************************************************
+ * Layout.
+ */
+
+#wrapper {
+  width: 100%;
+  background-color: white;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+@media only screen and (min-device-width: 769px) {
+  #wrapper {
+    width: 20em;
+  }
+}
+
+.field {
+  padding: 1em 0;
+}
+
+.control {
+  padding: 0;
+}
+
+#goal-weight,
+#bar-weight {
+  box-sizing: border-box;
+}
+
+#error {
+  display: none;
+  background-color: #FFDFDA;
+  border: solid 1px red;
+  border-radius: 1em;
+  padding: 5px 1em;
+  margin-bottom: 0.25em;
+}
+
+#addon-weights label {
+  color: black;
+  display: inline;
+  padding: 0 5px 0 0;
+}
+
+/***********************************************************************************************************************
+ * Results.
+ */
+
+.result-row {
+  padding: 1em;
+  background-color: #eee;
+  margin-bottom: 1em;
+}
+
+.result-row h4,
+.result-row div {
+  padding: 5px;
+}
+
+.plate {
+  color: black;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  text-align: center;
+  font-size: 14px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+/*
+These colours are based off Olympic plate colours for 25, 20, 15, 10, 5, which are red, blue, yellow, green, and
+white respectively. Intermediate weights (22.5, 17.5, 12.5, and 7.5) use different hues: cyan, purple, orange, and
+magenta. Lighter versions are for 10% and lighter again for 1% of these weights. The exception is 0.5kg, for which grey
+is used.
+*/
+.plate-25 {
+  background-color: #cd0000;
+  color: white;
+}
+
+.plate22_5 {
+  background-color: #0099e5;
+  color: white;
+}
+
+.plate-20 {
+  background-color: #00189a;
+  color: white;
+}
+
+.plate-17_5 {
+  background-color: #aa00ff;
+  color: white;
+}
+
+.plate-15 {
+  background-color: #e5e500;
+  color: white;
+}
+
+.plate-12_5 {
+  background-color: #ff7f00;
+  color: white;
+}
+
+.plate-10 {
+  background-color: #127f00;
+  color: white;
+}
+
+.plate-7_5 {
+  background-color: #ff00ff;
+  color: white;
+}
+
+.plate-5 {
+  background-color: #fff;
+}
+
+.plate-2_5 {
+  background-color: #ff3232;
+  color: white;
+}
+
+.plate-2_25 {
+  background-color: #66ccff;
+  color: white;
+}
+
+.plate-2 {
+  background-color: #657dff;
+  color: white;
+}
+
+.plate-1_75 {
+  background-color: #cc65ff;
+  color: white;
+}
+
+.plate-1_5 {
+  background-color: #ffff00;
+}
+
+.plate-1_25 {
+  background-color: #ffa54c;
+}
+
+.plate-1 {
+  background-color: #21e500;
+}
+
+.plate-0_75 {
+  background-color: #ff99ff;
+}
+
+.plate-0_5 {
+  background-color: #ccc;
+}
+
+.plate-0_25 {
+  background-color: #ffb2b2;
+}
+
+.plate-0_225 {
+  background-color: #98ddff;
+}
+
+.plate-0_2 {
+  background-color: #b3bfff;
+}
+
+.plate-0_175 {
+  background-color: #e6b3ff;
+}
+
+.plate-0_15 {
+  background-color: #ffff00;
+}
+
+.plate-0_125 {
+  background-color: #ffcc99;
+}
+
+.plate-0_1 {
+  background-color: #bdffb2;
+}

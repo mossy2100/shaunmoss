@@ -1,10 +1,24 @@
 ($ => {
-  // const plateWeights = [0.25, 0.5, 1, 1.25, 2, 2.5, 5, 7.5, 10, 15, 20, 25];
-  const plateWeights = [1.25, 2.5, 5, 10, 15, 20, 25];
+  const plateWeights = [1.25, 2.5, 5, 10, 20, 25];
   let dumbbellWeights;
   const percentages = [50, 70, 100, 90, 80];
-  const pinWeights = [5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90];
-  const addonWeights = [2.25, 2.25, 2.5, 2.5];
+  const pinStacks = [
+    {
+      name: '5-138',
+      weights: [5, 12, 19, 26, 33, 40, 47, 54, 61, 68, 75, 82, 89, 96, 103, 110, 117, 124, 131, 138],
+      addons: [2.5, 2.5]
+    },
+    {
+      name: '2.5-63.5',
+      weights: [2.5, 6, 9.5, 13, 16.5, 20, 23.5, 28.5, 33.5, 38.5, 43.5, 48.5, 53.5, 58.5, 63.5],
+      addons: [2.25, 2.25]
+    },
+    {
+      name: '2.5-45.5',
+      weights: [2.5, 5, 7.5, 10, 12.5, 15, 17.5, 21, 24.5, 28, 31.5, 35, 38.5, 42, 45.5],
+      addons: [2.25, 2.25]
+    }
+  ];
 
   /**
    * Round a number off to 2 decimal places.
@@ -69,15 +83,12 @@
   }
 
   /**
-   * Create the checkboxes so the user can select which add-on plates are avaialble.
+   * Initialise the pin stack select box.
    */
-  function setupAddonWeights() {
-    const $addonWeights = $('#addon-weights');
-    addonWeights.forEach(value => {
-      const $checkboxWrapper = $('<div>');
-      $checkboxWrapper.append(`<input type="checkbox" value="${value}">`);
-      $checkboxWrapper.append(`<label>${value}</label>`);
-      $addonWeights.append($checkboxWrapper);
+  function setupPinStacks() {
+    const $pinStack = $('#pin-stack');
+    pinStacks.forEach((value, index) => {
+      $pinStack.append(`<option value="${index}">${value.name}</option>`);
     });
   }
 
@@ -308,13 +319,18 @@
    *
    * @param {float} idealTotal
    *   The ideal total weight.
-   * @param {Array} availableAddOnWeights
-   *   The available addonWeights
+   * @param {Array} pinStack
+   *   The selected pin stack.
    *
    * @return {object}
    *   Object containing information about the ideal weight, closest weight, pin setting, and add-on weights.
    */
-  function calcMachine(idealTotal, availableAddOnWeights) {
+  function calcMachine(idealTotal) {
+    // Get the selected pin stack.
+    const pinStack = pinStacks[$('#pin-stack').val()];
+    const pinWeights = pinStack.weights;
+    const availableAddOnWeights = pinStack.addons;
+
     // Get all combinations of add-on weights.
     const addonCombinations = getCombinations([], availableAddOnWeights);
     const strAddonCombinations = [];
@@ -337,7 +353,7 @@
         addons = uniqueAddonCombinations[i];
         addonsWeight = addons.reduce((total, value) => total + value, 0);
         totalWeight = pinWeight + addonsWeight;
-        combinations.push({totalWeight, pinWeight, addonsWeight, addons});
+        combinations.push({ totalWeight, pinWeight, addonsWeight, addons });
       }
     });
 
@@ -371,7 +387,7 @@
       return combinations2[combinations2.length - 1];
     }
 
-    // Find closest total weights below and above the ideal.
+    // Find closest total weights equal to, or below and above the ideal.
     let j;
     for (j = 0; j < combinations2.length; j++) {
       // Check for exact match.
@@ -390,47 +406,18 @@
     const diffBelow = idealTotal - closestBelow;
     const diffAbove = closestAbove - idealTotal;
 
-    // If the above weight is closer to the ideal, or if it's 50-50, take the above weight.
+    // If the above weight is closer to the ideal, or if it's 50-50, take the higher weight.
     if (diffAbove <= diffBelow) {
       return combinations2[j];
     }
 
-    // Below weight is closer to the ideal.
+    // The lower weight is closer to the ideal.
     return combinations2[j - 1];
   }
 
   /* ===================================================================================================================
    * Functions to display results.
    */
-
-  /**
-   * Calculate hue from 0 to 360, assuming that the minimum plate weight it 0.25 kg and the maximum is 50 kg.
-   *
-   * @param {float} weight
-   *   The plate or add-on weight.
-   *
-   * @return {float}
-   *   The appropriate hue for that plate. Red for small, violet for big.
-   */
-  // function calcColors(weight) {
-  //   const colorMap = [
-  //     { min: 0, max: 1, 'background-color': '#000000', color: 'white' },
-  //     { min: 1, max: 2, 'background-color': '#ff0000', color: 'white' },
-  //     { min: 2, max: 5, 'background-color': '#ffa500', color: 'white' },
-  //     { min: 5, max: 10, 'background-color': '#ffff00', color: 'black' },
-  //     { min: 10, max: 20, 'background-color': '#2dbf2d', color: 'white' },
-  //     { min: 20, max: 25, 'background-color': '#0065ff', color: 'white' },
-  //     { min: 25, max: 50, 'background-color': '#c259e9', color: 'white' }
-  //   ];
-  //   for (let i = 0; i < colorMap.length; i++) {
-  //     if (weight >= colorMap[i].min && weight < colorMap[i].max) {
-  //       return {
-  //         color: colorMap[i].color,
-  //         'background-color': colorMap[i]['background-color']
-  //       };
-  //     }
-  //   }
-  // }
 
   /**
    * Create the plates-wrapper element.
@@ -460,7 +447,7 @@
       });
       // Create elements for the plate weights.
       plates.forEach(plateWeight => {
-        const plateClass = `plate-${plateWeight.toString().replace('.', '-')}`;
+        const plateClass = `plate-${plateWeight.toString().replace('.', '_')}`;
         const $plate = $(`<span class="plate ${plateClass}">${plateWeight}</span>`);
         const height = plateWeight * 2 + 50;
         const margin = roundTo2decimalplaces((maxHeight - height) / 2);
@@ -564,22 +551,13 @@
     const $results = $('#results');
     $results.html('');
 
-    // Get the available add-on weights.
-    const availableAddonWeights = [];
-    $('#addon-weights input[type="checkbox"]').each((i, el) => {
-      const $el = $(el);
-      if ($el.is(':checked')) {
-        availableAddonWeights.push(parseFloat($el.val()));
-      }
-    });
-
     // Calculate the closest we can get with the available plates.
     percentages.forEach(percent => {
       // Calculate ideal weight rounded to two decimal places (nearest 10 grams).
       const idealWeight = roundTo2decimalplaces(goal * (percent / 100));
 
       // Get the best combination of pin setting plus weights.
-      const { totalWeight, pinWeight, addons } = calcMachine(idealWeight, availableAddonWeights);
+      const { totalWeight, pinWeight, addons } = calcMachine(idealWeight);
       addons.sort(sortDesc);
 
       // Add the result.
@@ -602,7 +580,7 @@
     const exerciseType = $('#exercise-type').val();
     const $barWeightWrapper = $('#bar-weight-wrapper');
     const $barWeightLabel = $barWeightWrapper.find('label');
-    const $addonWeightsWrapper = $('#addon-weights-wrapper');
+    const $pinStackWrapper = $('#pin-stack-wrapper');
 
     // Determine if bar weight should be visible.
     if (exerciseType === 'dumbbell' || exerciseType === 'machine-pin') {
@@ -617,11 +595,11 @@
       }
     }
 
-    // Determine if add-on plates should be visible.
+    // Determine if pin stack and add-on plates should be visible.
     if (exerciseType === 'machine-pin') {
-      $addonWeightsWrapper.show();
+      $pinStackWrapper.show();
     } else {
-      $addonWeightsWrapper.hide();
+      $pinStackWrapper.hide();
     }
 
     // Reset the results.
@@ -662,7 +640,7 @@
    */
   function init() {
     setupDbWeights();
-    setupAddonWeights();
+    setupPinStacks();
     modifyForm();
     $('#exercise-type').change(modifyForm);
     $('#calc').click(calculate);

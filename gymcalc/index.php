@@ -14,7 +14,7 @@ header('Cache-Control: max-age=0');
 
   <title>GymCalc</title>
 
-  <link rel="stylesheet" type="text/css" href="css/gymcalc.css?<?= time() ?>">
+  <link rel="stylesheet" type="text/css" href="scss/gymcalc.css?<?= time() ?>">
 
   <script language="JavaScript" src="js/jquery-3.3.1.min.js"></script>
   <script language="JavaScript" src="js/gymcalc.js?<?= time() ?>"></script>
@@ -32,35 +32,29 @@ header('Cache-Control: max-age=0');
   <div id="error"></div>
 
   <form id="gymcalc-form">
-    <div class="field">
+    <div id="exercise-type-wrapper" class="field">
       <label for="exercise-type">Exercise type</label>
-      <div class="control">
-        <select id="exercise-type">
-          <option value="barbell">Barbell</option>
-          <option value="dumbbell">Dumbbell</option>
-          <option value="machine-plate-uni">Unilateral plate-loaded machine</option>
-          <option value="machine-plate-bi">Bilateral plate-loaded machine</option>
-          <option value="machine-pin">Pin-loaded machine</option>
-        </select>
-      </div>
+      <select id="exercise-type">
+        <option value="barbell">Barbell</option>
+        <option value="dumbbell">Dumbbell</option>
+        <option value="machine-plate-uni">Unilateral plate-loaded machine</option>
+        <option value="machine-plate-bi">Bilateral plate-loaded machine</option>
+        <option value="machine-pin">Pin-loaded machine</option>
+      </select>
     </div>
     <div id="goal-weight-wrapper" class="field">
       <label for="goal-weight">Goal weight (both arms/legs)</label>
-      <div class="control">
-        <input id="goal-weight" type="number" min="0" max="500" step="0.1">
-        <span>kg</span>
-      </div>
+      <input id="goal-weight" type="number" min="0" max="500" step="0.1">
+      <span>kg</span>
     </div>
     <div id="bar-weight-wrapper" class="field">
       <label for="goal-weight">Bar weight</label>
-      <div class="control">
-        <input id="bar-weight" type="number" min="0" max="100" step="0.1">
-        <span>kg</span>
-      </div>
+      <input id="bar-weight" type="number" min="0" max="100" step="0.1">
+      <span>kg</span>
     </div>
-    <div id="addon-weights-wrapper" class="field">
-      <label for="addon-weights">Available add-on weights</label>
-      <div id="addon-weights"></div>
+    <div id="pin-stack-wrapper" class="field">
+      <label for="pin-stack">Pin stack</label>
+      <select id="pin-stack"></select>
     </div>
     <div class="field">
       <button type="button" id="calc">Calculate</button>
