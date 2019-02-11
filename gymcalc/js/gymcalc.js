@@ -520,7 +520,7 @@
     // Get the goal weight.
     const goal = parseFloat($('#goal-weight').val());
     if (!goal) {
-      setError('Please set goal weight.');
+      setError('Please enter goal weight.');
       return;
     }
 
@@ -627,6 +627,7 @@
     const $barWeightWrapper = $('#bar-weight-wrapper');
     const $barWeightLabel = $barWeightWrapper.find('label');
     const $pinStackWrapper = $('#pin-stack-wrapper');
+    const $addOnWeightsWrapper = $('#addon-weights-wrapper');
 
     // Determine if bar weight should be visible.
     if (exerciseType === 'dumbbell' || exerciseType === 'machine-pin') {
@@ -644,8 +645,10 @@
     // Determine if pin stack and add-on plates should be visible.
     if (exerciseType === 'machine-pin') {
       $pinStackWrapper.show();
+      $addOnWeightsWrapper.show();
     } else {
       $pinStackWrapper.hide();
+      $addOnWeightsWrapper.hide();
     }
 
     // Reset the results.

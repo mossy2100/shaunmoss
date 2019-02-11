@@ -1,6 +1,38 @@
 /***********************************************************************************************************************
- * Base font sizes for different devices.
+ * Colours
  */
+
+$white: #fff;
+$light-grey: #eee;
+$grey: #ccc;
+$dark-grey: #333;
+$black: #000;
+
+$dark-red: #cd0000;
+$dark-cyan: #0099e5;
+$dark-blue: #00189a;
+$dark-purple: #aa00ff;
+$dark-yellow: #e5e500;
+$dark-orange: #ff7f00;
+$dark-green: #007f00;
+$dark-pink: #ff00ff;
+
+$red: #ff3232;
+$cyan: #66ccff;
+$blue: #657dff;
+$purple: #cc65ff;
+$yellow: #ffff00;
+$orange: #ffa54c;
+$green: #00e500;
+$pink: #ff99ff;
+
+$light-red: #ffb2b2;
+$light-cyan: #98ddff;
+$light-blue: #b3bfff;
+$light-purple: #e6b3ff;
+$light-yellow: #ffffb3;
+$light-orange: #ffcc99;
+$light-green: #b3ffb2;
 
 /***********************************************************************************************************************
  * Elements.
@@ -12,14 +44,14 @@
 
 body {
   padding: 0.5em;
-  background-color: white;
+  background-color: $white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 h1 {
   margin: 0;
-  color: green;
+  color: $dark-green;
   text-align: center;
   font-size: 2em;
 }
@@ -27,7 +59,8 @@ h1 {
 h2 {
   margin: 5px 0 1em 0;
   font-style: italic;
-  color: limegreen;
+  font-size: 1em;
+  color: $green;
   text-align: center;
 }
 
@@ -37,7 +70,8 @@ h3 {
 }
 
 select, input[type="number"] {
-  border: solid 1px gray;
+  border-radius: 0.2em;
+  border: solid 1px $grey;
   height: 2em;
 }
 
@@ -46,16 +80,21 @@ input[type="number"] {
 }
 
 button {
-  border-radius: 1px;
+  border-radius: 0.2em;
   padding: 0.5em;
-  background-color: royalblue;
-  border-color: navy;
-  color: white;
+  background-color: $blue;
+  border-color: $dark-blue;
+  color: $white;
   width: 100%;
+  cursor: pointer;
 
   &:hover {
-    background-color: navy;
+    background-color: $dark-blue;
   }
+}
+
+select, input, button {
+  font-size: 1em;
 }
 
 /***********************************************************************************************************************
@@ -66,19 +105,13 @@ button {
   width: 100%;
 }
 
-@media only screen and (min-device-width: 769px) {
-  #wrapper {
-    width: 20em;
-  }
-}
-
 .field {
   padding: 0.5em 0;
 
   label {
     display: block;
-    margin-bottom: 5px;
-    color: royalblue;
+    margin-bottom: 0.5em;
+    color: $blue;
   }
 }
 
@@ -92,16 +125,16 @@ button {
 
 #error {
   display: none;
-  background-color: #FFDFDA;
-  border: solid 1px red;
-  border-radius: 1em;
+  background-color: $light-red;
+  border: solid 1px $red;
+  border-radius: 0.2em;
   padding: 0.5em 1em;
   margin-bottom: 0.25em;
 }
 
 #addon-weights {
   label {
-    color: black;
+    color: $black;
     display: inline;
     padding: 0 0.5em 0 0;
   }
@@ -121,13 +154,14 @@ button {
  * Results.
  */
 
+#results {
+  margin-bottom: 10em;
+}
+
 .result-row {
   padding: 0.5em;
-  background-color: #eee;
-
-  &:not(:last-child) {
-    margin-bottom: 1em;
-  }
+  background-color: $light-grey;
+  margin-bottom: 1em;
 
   h3 {
     margin-bottom: 0.5em;
@@ -144,7 +178,7 @@ button {
 }
 
 .plate {
-  color: black;
+  color: $black;
   writing-mode: vertical-rl;
   text-orientation: sideways;
   text-align: center;
@@ -153,124 +187,157 @@ button {
 }
 
 .pin-selection {
-  background-color: #333;
-  color: white;
+  background-color: $dark-grey;
+  color: $white;
 }
 
 /*
-These colours are based off Olympic plate colours for 25, 20, 15, 10, 5, which are red, blue, yellow, green, and
-white respectively. Intermediate weights (22.5, 17.5, 12.5, and 7.5) use different hues: cyan, purple, orange, and
-magenta. Lighter versions are for 10% and lighter again for 1% of these weights. The exception is 0.5kg, for which grey
-is used.
+These colours are based off Olympic plate colours for 25, 20, 15, 10, 5, which are red, blue, yellow, green, and white
+respectively. Intermediate weights (22.5, 17.5, 12.5, and 7.5) use different hues: cyan, purple, orange, and pink.
+Lighter versions are for 10% and lighter again for 1% of these weights. The exception is 0.5kg, for which grey is used.
 */
 .plate-25 {
-  background-color: #cd0000;
-  color: white;
+  background-color: $dark-red;
+  color: $white;
 }
 
 .plate-22_5 {
-  background-color: #0099e5;
-  color: white;
+  background-color: $dark-cyan;
+  color: $white;
 }
 
 .plate-20 {
-  background-color: #00189a;
-  color: white;
+  background-color: $dark-blue;
+  color: $white;
 }
 
 .plate-17_5 {
-  background-color: #aa00ff;
-  color: white;
+  background-color: $dark-purple;
+  color: $white;
 }
 
 .plate-15 {
-  background-color: #e5e500;
-  color: white;
+  background-color: $dark-yellow;
+  color: $black;
 }
 
 .plate-12_5 {
-  background-color: #ff7f00;
-  color: white;
+  background-color: $dark-orange;
+  color: $white;
 }
 
 .plate-10 {
-  background-color: #127f00;
-  color: white;
+  background-color: $dark-green;
+  color: $white;
 }
 
 .plate-7_5 {
-  background-color: #ff00ff;
-  color: white;
+  background-color: $dark-pink;
+  color: $white;
 }
 
 .plate-5 {
-  background-color: white;
+  background-color: $white;
 }
 
 .plate-2_5 {
-  background-color: #ff3232;
-  color: white;
+  background-color: $red;
+  color: $white;
 }
 
 .plate-2_25 {
-  background-color: #66ccff;
-  color: white;
+  background-color: $cyan;
+  color: $white;
 }
 
 .plate-2 {
-  background-color: #657dff;
-  color: white;
+  background-color: $blue;
+  color: $white;
 }
 
 .plate-1_75 {
-  background-color: #cc65ff;
-  color: white;
+  background-color: $purple;
+  color: $white;
 }
 
 .plate-1_5 {
-  background-color: #ffff00;
+  background-color: $yellow;
 }
 
 .plate-1_25 {
-  background-color: #ffa54c;
+  background-color: $orange;
 }
 
 .plate-1 {
-  background-color: #21e500;
+  background-color: $green;
 }
 
 .plate-0_75 {
-  background-color: #ff99ff;
+  background-color: $pink;
 }
 
 .plate-0_5 {
-  background-color: #ccc;
+  background-color: $grey;
 }
 
 .plate-0_25 {
-  background-color: #ffb2b2;
+  background-color: $light-red;
 }
 
 .plate-0_225 {
-  background-color: #98ddff;
+  background-color: $light-cyan;
 }
 
 .plate-0_2 {
-  background-color: #b3bfff;
+  background-color: $light-blue;
 }
 
 .plate-0_175 {
-  background-color: #e6b3ff;
+  background-color: $light-purple;
 }
 
 .plate-0_15 {
-  background-color: #ffffb3;
+  background-color: $light-yellow;
 }
 
 .plate-0_125 {
-  background-color: #ffcc99;
+  background-color: $light-orange;
 }
 
 .plate-0_1 {
-  background-color: #bdffb2;
+  background-color: $light-green;
+}
+
+/***********************************************************************************************************************
+ * Non-phone overrides.
+ */
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) {
+      @content ;
+    }
+  } @else if $point == laptop {
+    @media (min-width: 64em) {
+      @content ;
+    }
+  } @else if $point == tablet {
+    @media (min-width: 50em) {
+      @content ;
+    }
+  } @else if $point == phablet {
+    @media (min-width: 37.5em) {
+      @content ;
+    }
+  }
+}
+
+@include breakpoint(desktop) {
+  body {
+    font-size: 20px;
+  }
+
+  #wrapper {
+    width: 20em;
+  }
 }
