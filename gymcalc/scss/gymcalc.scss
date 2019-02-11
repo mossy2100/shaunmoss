@@ -8,28 +8,24 @@
 
 * {
   box-sizing: border-box;
-  font-size: 40px;
 }
 
 body {
   padding: 0.5em;
-  background-color: #eee;
-}
-
-body, input, select, button {
+  background-color: white;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 
 h1 {
   margin: 0;
   color: green;
   text-align: center;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 h2 {
   margin: 5px 0 1em 0;
-  font-size: 2em;
   font-style: italic;
   color: limegreen;
   text-align: center;
@@ -40,21 +36,9 @@ h3 {
   margin: 0;
 }
 
-h4 {
-  margin: 0;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: royalblue;
-}
-
 select, input[type="number"] {
   border: solid 1px gray;
   height: 2em;
-  width: 100%;
-  font-size: 1.5rem;
 }
 
 input[type="number"] {
@@ -68,7 +52,6 @@ button {
   border-color: navy;
   color: white;
   width: 100%;
-  font-size: 1.5em;
 
   &:hover {
     background-color: navy;
@@ -81,9 +64,6 @@ button {
 
 #wrapper {
   width: 100%;
-  background-color: white;
-  padding: 1em;
-  border-radius: 1em;
 }
 
 @media only screen and (min-device-width: 769px) {
@@ -93,20 +73,21 @@ button {
 }
 
 .field {
-  padding: 1em 0;
+  padding: 0.5em 0;
 
-  span {
-    font-size: 1.5em;
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: royalblue;
   }
 }
 
-.control {
-  padding: 0;
+#exercise-type {
+  width: 100%;
 }
 
-#goal-weight,
-#bar-weight {
-  box-sizing: border-box;
+#pin-stack {
+  width: 50%;
 }
 
 #error {
@@ -118,10 +99,18 @@ button {
   margin-bottom: 0.25em;
 }
 
-#addon-weights label {
-  color: black;
-  display: inline;
-  padding: 0 0.5em 0 0;
+#addon-weights {
+  label {
+    color: black;
+    display: inline;
+    padding: 0 0.5em 0 0;
+  }
+
+  span:last-child {
+    label {
+      padding-right: 0;
+    }
+  }
 }
 
 #pin-stack-wrapper {
@@ -133,17 +122,25 @@ button {
  */
 
 .result-row {
-  padding: 1em;
+  padding: 0.5em;
   background-color: #eee;
 
   &:not(:last-child) {
     margin-bottom: 1em;
   }
-}
 
-.result-row h4,
-.result-row div {
-  padding: 0.5em;
+  h3 {
+    margin-bottom: 0.5em;
+  }
+
+  label {
+    width: 5em;
+    float: left;
+  }
+
+  > div {
+    margin: 0.5em 0;
+  }
 }
 
 .plate {
@@ -151,9 +148,13 @@ button {
   writing-mode: vertical-rl;
   text-orientation: sideways;
   text-align: center;
-  font-size: 1.5rem;
   margin-left: 1px;
   margin-right: 1px;
+}
+
+.pin-selection {
+  background-color: #333;
+  color: white;
 }
 
 /*
@@ -203,7 +204,7 @@ is used.
 }
 
 .plate-5 {
-  background-color: #fff;
+  background-color: white;
 }
 
 .plate-2_5 {
@@ -263,7 +264,7 @@ is used.
 }
 
 .plate-0_15 {
-  background-color: #ffff00;
+  background-color: #ffffb3;
 }
 
 .plate-0_125 {
