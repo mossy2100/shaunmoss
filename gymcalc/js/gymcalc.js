@@ -100,13 +100,15 @@
    */
   function setupAddonWeights() {
     const $addonWeights = $('#addon-weights');
-    addonWeights.forEach(value => {
+    addonWeights.forEach((value, i) => {
       const $checkboxWrapper = $('<span>');
       $checkboxWrapper.append(`<input type="checkbox" value="${value}">`);
+      if (i === addonWeights.length - 1) {
+        value += ' kg';
+      }
       $checkboxWrapper.append(`<label>${value}</label>`);
       $addonWeights.append($checkboxWrapper);
     });
-    $addonWeights.append('&nbsp;kg');
   }
 
   /* ===================================================================================================================

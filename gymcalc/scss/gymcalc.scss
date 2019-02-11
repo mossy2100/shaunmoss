@@ -69,13 +69,13 @@ h3 {
   margin: 0;
 }
 
-select, input[type="number"] {
+select, input[type=number] {
   border-radius: 0.2em;
   border: solid 1px $grey;
   height: 2em;
 }
 
-input[type="number"] {
+input[type=number] {
   width: 50%;
 }
 
@@ -93,8 +93,16 @@ button {
   }
 }
 
-select, input, button {
+select, input[type=number], button {
   font-size: 1em;
+}
+
+input[type=checkbox] {
+  transform: scale(3.5, 3.5);
+  position: relative;
+  top: -1em;
+  left: 1em;
+  width: 1.5em;
 }
 
 /***********************************************************************************************************************
@@ -136,7 +144,7 @@ select, input, button {
   label {
     color: $black;
     display: inline;
-    padding: 0 0.5em 0 0;
+    padding: 0 0.85em 0 0.85em;
   }
 
   span:last-child {
@@ -339,5 +347,16 @@ Lighter versions are for 10% and lighter again for 1% of these weights. The exce
 
   #wrapper {
     width: 20em;
+  }
+
+  input[type=checkbox] {
+    transform: scale(1.5, 1.5);
+    top: -0.3em;
+  }
+
+  #addon-weights {
+    label {
+      padding: 0 0.5em 0 0.5em;
+    }
   }
 }

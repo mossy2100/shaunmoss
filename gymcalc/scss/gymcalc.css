@@ -30,12 +30,12 @@ h3 {
   font-size: 1.5em;
   margin: 0; }
 
-select, input[type="number"] {
+select, input[type=number] {
   border-radius: 0.2em;
   border: solid 1px #ccc;
   height: 2em; }
 
-input[type="number"] {
+input[type=number] {
   width: 50%; }
 
 button {
@@ -49,8 +49,15 @@ button {
   button:hover {
     background-color: #00189a; }
 
-select, input, button {
+select, input[type=number], button {
   font-size: 1em; }
+
+input[type=checkbox] {
+  transform: scale(3.5, 3.5);
+  position: relative;
+  top: -1em;
+  left: 1em;
+  width: 1.5em; }
 
 /***********************************************************************************************************************
  * Layout.
@@ -82,7 +89,7 @@ select, input, button {
 #addon-weights label {
   color: #000;
   display: inline;
-  padding: 0 0.5em 0 0; }
+  padding: 0 0.85em 0 0.85em; }
 #addon-weights span:last-child label {
   padding-right: 0; }
 
@@ -219,6 +226,13 @@ Lighter versions are for 10% and lighter again for 1% of these weights. The exce
     font-size: 20px; }
 
   #wrapper {
-    width: 20em; } }
+    width: 20em; }
+
+  input[type=checkbox] {
+    transform: scale(1.5, 1.5);
+    top: -0.3em; }
+
+  #addon-weights label {
+    padding: 0 0.5em 0 0.5em; } }
 
 /*# sourceMappingURL=gymcalc.css.map */
