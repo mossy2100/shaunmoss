@@ -53,7 +53,7 @@ select, input[type=number], button {
   font-size: 1em; }
 
 input[type=checkbox] {
-  transform: scale(3.5, 3.5);
+  transform: scale(3, 3);
   position: relative;
   top: -1em;
   left: 1em;
