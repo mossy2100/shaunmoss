@@ -97,12 +97,17 @@ select, input[type=number], button {
   font-size: 1em;
 }
 
-input[type=checkbox] {
+input[type=checkbox],
+input[type=radio] {
   transform: scale(3, 3);
   position: relative;
   top: -1em;
   left: 1em;
   width: 1.5em;
+}
+
+label {
+  color: $blue;
 }
 
 /***********************************************************************************************************************
@@ -119,7 +124,6 @@ input[type=checkbox] {
   label {
     display: block;
     margin-bottom: 0.5em;
-    color: $blue;
   }
 }
 
@@ -127,24 +131,32 @@ input[type=checkbox] {
   width: 100%;
 }
 
+#num-dumbbells-wrapper{
+  display: none;
+
+  label {
+    display: inline;
+    color: $black;
+  }
+}
+
+#pin-stack-wrapper {
+  display: none;
+}
+
 #pin-stack {
   width: 50%;
 }
 
-#error {
+#addon-weights-wrapper {
   display: none;
-  background-color: $light-red;
-  border: solid 1px $red;
-  border-radius: 0.2em;
-  padding: 0.5em 1em;
-  margin-bottom: 0.25em;
 }
 
 #addon-weights {
   label {
-    color: $black;
     display: inline;
     padding: 0 0.85em 0 0.85em;
+    color: $black;
   }
 
   span:last-child {
@@ -154,8 +166,13 @@ input[type=checkbox] {
   }
 }
 
-#pin-stack-wrapper {
+#error {
   display: none;
+  background-color: $light-red;
+  border: solid 1px $red;
+  border-radius: 0.2em;
+  padding: 0.5em 1em;
+  margin-bottom: 0.25em;
 }
 
 /***********************************************************************************************************************
@@ -169,15 +186,15 @@ input[type=checkbox] {
 .result-row {
   padding: 0.5em;
   background-color: $light-grey;
-  margin-bottom: 1em;
+  margin: 1em 0;
 
   h3 {
     margin-bottom: 0.5em;
   }
 
   label {
-    width: 5em;
-    float: left;
+    width: 8em;
+    display: inline-block;
   }
 
   > div {
@@ -185,13 +202,21 @@ input[type=checkbox] {
   }
 }
 
+.plates-wrapper > label {
+  vertical-align: top;
+}
+
+.plates {
+  display: inline-block;
+}
+
 .plate {
   color: $black;
-  writing-mode: vertical-rl;
-  text-orientation: sideways;
   text-align: center;
-  margin-left: 1px;
-  margin-right: 1px;
+  height: 1.2em;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  display: block;
 }
 
 .pin-selection {
@@ -349,9 +374,15 @@ Lighter versions are for 10% and lighter again for 1% of these weights. The exce
     width: 20em;
   }
 
-  input[type=checkbox] {
+  input[type=checkbox],
+  input[type=radio] {
     transform: scale(1.5, 1.5);
     top: -0.3em;
+  }
+
+  input[type=radio] {
+    left: 0.1em;
+    width: 2em;
   }
 
   #addon-weights {

@@ -1,6 +1,15 @@
 <?php
 header('Cache-Control: no-cache');
 header('Cache-Control: max-age=0');
+
+$css_filename = 'gymcalc.css';
+$js_filename = 'gymcalc.js';
+$add_timestamp = TRUE;
+if ($add_timestamp) {
+  $time = time();
+  $css_filename .= "?$time";
+  $js_filename .= "?$time";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +23,10 @@ header('Cache-Control: max-age=0');
 
   <title>GymCalc</title>
 
-  <link rel="stylesheet" type="text/css" href="scss/gymcalc.css?<?= time() ?>">
+  <link rel="stylesheet" type="text/css" href="scss/<?= $css_filename ?>">
 
   <script language="JavaScript" src="js/jquery-3.3.1.min.js"></script>
-  <script language="JavaScript" src="js/gymcalc.js?<?= time() ?>"></script>
+  <script language="JavaScript" src="js/<?= $js_filename ?>"></script>
 
 </head>
 <body>
@@ -35,7 +44,7 @@ header('Cache-Control: max-age=0');
     <div id="exercise-type-wrapper" class="field">
       <label for="exercise-type">Exercise type</label>
       <select id="exercise-type">
-        <option value="barbell">Barbell</option>
+        <option value="barbell" selected>Barbell</option>
         <option value="dumbbell">Dumbbell</option>
         <option value="machine-plate-uni">Unilateral plate-loaded machine</option>
         <option value="machine-plate-bi">Bilateral plate-loaded machine</option>
@@ -43,14 +52,19 @@ header('Cache-Control: max-age=0');
       </select>
     </div>
     <div id="goal-weight-wrapper" class="field">
-      <label for="goal-weight">Goal weight (both arms/legs)</label>
+      <label for="goal-weight">Goal weight</label>
       <input id="goal-weight" type="number" min="0" max="500" step="0.1">
       <span>kg</span>
     </div>
     <div id="bar-weight-wrapper" class="field">
-      <label for="goal-weight">Bar weight</label>
+      <label for="bar-weight">Bar weight</label>
       <input id="bar-weight" type="number" min="0" max="100" step="0.1">
       <span>kg</span>
+    </div>
+    <div id="num-dumbbells-wrapper" class="field">
+      Weight is for
+      <input id="num-dumbbells-1" name="num-dumbbells" type="radio" value="1" checked><label for="num-dumbbells-1">1 or</label>
+      <input id="num-dumbbells-2" name="num-dumbbells" type="radio" value="2"><label for="num-dumbbells-2">2 dumbbells</label>
     </div>
     <div id="pin-stack-wrapper" class="field">
       <label for="pin-stack">Pin stack</label>
