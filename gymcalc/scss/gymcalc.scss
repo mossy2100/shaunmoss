@@ -100,10 +100,7 @@ select, input[type=number], button {
 input[type=checkbox],
 input[type=radio] {
   transform: scale(3, 3);
-  position: relative;
-  top: -1em;
-  left: 1em;
-  width: 1.5em;
+  width: 2em;
 }
 
 label {
@@ -131,12 +128,14 @@ label {
   width: 100%;
 }
 
-#num-dumbbells-wrapper{
+#num-dumbbells-wrapper {
   display: none;
+  padding-left: 0.5em;
 
   label {
     display: inline;
     color: $black;
+    padding: 0 0.5em;
   }
 }
 
@@ -377,12 +376,9 @@ Lighter versions are for 10% and lighter again for 1% of these weights. The exce
   input[type=checkbox],
   input[type=radio] {
     transform: scale(1.5, 1.5);
-    top: -0.3em;
   }
 
   input[type=radio] {
-    left: 0.1em;
-    width: 2em;
   }
 
   #addon-weights {

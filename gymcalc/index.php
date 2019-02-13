@@ -62,7 +62,6 @@ if ($add_timestamp) {
       <span>kg</span>
     </div>
     <div id="num-dumbbells-wrapper" class="field">
-      Weight is for
       <input id="num-dumbbells-1" name="num-dumbbells" type="radio" value="1" checked><label for="num-dumbbells-1">1 or</label>
       <input id="num-dumbbells-2" name="num-dumbbells" type="radio" value="2"><label for="num-dumbbells-2">2 dumbbells</label>
     </div>
