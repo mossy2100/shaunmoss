@@ -1,0 +1,261 @@
+/***********************************************************************************************************************
+ * Colours
+ */
+/***********************************************************************************************************************
+ * Elements.
+ */
+* {
+  box-sizing: border-box; }
+
+body {
+  padding: 0.5em;
+  background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px; }
+
+h1 {
+  margin: 0;
+  color: #007f00;
+  text-align: center;
+  font-size: 2em; }
+
+h2 {
+  margin: 5px 0 1em 0;
+  font-style: italic;
+  font-size: 1em;
+  color: #00e500;
+  text-align: center; }
+
+h3 {
+  font-size: 1.5em;
+  margin: 0; }
+
+select, input[type=number] {
+  border-radius: 0.2em;
+  border: solid 1px #ccc;
+  height: 2em; }
+
+input[type=number] {
+  width: 50%; }
+
+button {
+  border-radius: 0.2em;
+  padding: 0.5em;
+  background-color: #657dff;
+  border-color: #00189a;
+  color: #fff;
+  width: 100%;
+  cursor: pointer; }
+  button:hover {
+    background-color: #00189a; }
+
+select, input[type=number], button {
+  font-size: 1em; }
+
+input[type=checkbox],
+input[type=radio] {
+  transform: scale(3, 3);
+  position: relative;
+  top: -1em;
+  left: 1em;
+  width: 1.5em; }
+
+label {
+  color: #657dff; }
+
+/***********************************************************************************************************************
+ * Layout.
+ */
+#wrapper {
+  width: 100%; }
+
+.field {
+  padding: 0.5em 0; }
+  .field label {
+    display: block;
+    margin-bottom: 0.5em; }
+
+#exercise-type {
+  width: 100%; }
+
+#num-dumbbells-wrapper {
+  display: none; }
+  #num-dumbbells-wrapper label {
+    display: inline;
+    color: #000; }
+
+#pin-stack-wrapper {
+  display: none; }
+
+#pin-stack {
+  width: 50%; }
+
+#addon-weights-wrapper {
+  display: none; }
+
+#addon-weights label {
+  display: inline;
+  padding: 0 0.85em 0 0.85em;
+  color: #000; }
+#addon-weights span:last-child label {
+  padding-right: 0; }
+
+#error {
+  display: none;
+  background-color: #ffb2b2;
+  border: solid 1px #ff3232;
+  border-radius: 0.2em;
+  padding: 0.5em 1em;
+  margin-bottom: 0.25em; }
+
+/***********************************************************************************************************************
+ * Results.
+ */
+#results {
+  margin-bottom: 10em; }
+
+.result-row {
+  padding: 0.5em;
+  background-color: #eee;
+  margin: 1em 0; }
+  .result-row h3 {
+    margin-bottom: 0.5em; }
+  .result-row label {
+    width: 8em;
+    display: inline-block; }
+  .result-row > div {
+    margin: 0.5em 0; }
+
+.plates-wrapper > label {
+  vertical-align: top; }
+
+.plates {
+  display: inline-block; }
+
+.plate {
+  color: #000;
+  text-align: center;
+  height: 1.2em;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  display: block; }
+
+.pin-selection {
+  background-color: #333;
+  color: #fff; }
+
+/*
+These colours are based off Olympic plate colours for 25, 20, 15, 10, 5, which are red, blue, yellow, green, and white
+respectively. Intermediate weights (22.5, 17.5, 12.5, and 7.5) use different hues: cyan, purple, orange, and pink.
+Lighter versions are for 10% and lighter again for 1% of these weights. The exception is 0.5kg, for which grey is used.
+*/
+.plate-25 {
+  background-color: #cd0000;
+  color: #fff; }
+
+.plate-22_5 {
+  background-color: #0099e5;
+  color: #fff; }
+
+.plate-20 {
+  background-color: #00189a;
+  color: #fff; }
+
+.plate-17_5 {
+  background-color: #aa00ff;
+  color: #fff; }
+
+.plate-15 {
+  background-color: #e5e500;
+  color: #000; }
+
+.plate-12_5 {
+  background-color: #ff7f00;
+  color: #fff; }
+
+.plate-10 {
+  background-color: #007f00;
+  color: #fff; }
+
+.plate-7_5 {
+  background-color: #ff00ff;
+  color: #fff; }
+
+.plate-5 {
+  background-color: #fff; }
+
+.plate-2_5 {
+  background-color: #ff3232;
+  color: #fff; }
+
+.plate-2_25 {
+  background-color: #66ccff;
+  color: #fff; }
+
+.plate-2 {
+  background-color: #657dff;
+  color: #fff; }
+
+.plate-1_75 {
+  background-color: #cc65ff;
+  color: #fff; }
+
+.plate-1_5 {
+  background-color: #ffff00; }
+
+.plate-1_25 {
+  background-color: #ffa54c; }
+
+.plate-1 {
+  background-color: #00e500; }
+
+.plate-0_75 {
+  background-color: #ff99ff; }
+
+.plate-0_5 {
+  background-color: #ccc; }
+
+.plate-0_25 {
+  background-color: #ffb2b2; }
+
+.plate-0_225 {
+  background-color: #98ddff; }
+
+.plate-0_2 {
+  background-color: #b3bfff; }
+
+.plate-0_175 {
+  background-color: #e6b3ff; }
+
+.plate-0_15 {
+  background-color: #ffffb3; }
+
+.plate-0_125 {
+  background-color: #ffcc99; }
+
+.plate-0_1 {
+  background-color: #b3ffb2; }
+
+/***********************************************************************************************************************
+ * Non-phone overrides.
+ */
+@media (min-width: 70em) {
+  body {
+    font-size: 20px; }
+
+  #wrapper {
+    width: 20em; }
+
+  input[type=checkbox],
+  input[type=radio] {
+    transform: scale(1.5, 1.5);
+    top: -0.3em; }
+
+  input[type=radio] {
+    left: 0.1em;
+    width: 2em; }
+
+  #addon-weights label {
+    padding: 0 0.5em 0 0.5em; } }
+
+/*# sourceMappingURL=gymcalc.css.map */

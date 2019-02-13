@@ -1,0 +1,11 @@
+Features
+========
+Set up plate and dumbell inventories.
+Assign plate colours.
+Create machine profiles.
+Create exercise profiles.
+Remember last goal weight for an exercise.
+Suggest next goal weight for an exercise.
+
+Colours for plates can be generated automatically.
+Use hue from 0-360 with 0 (red) mapped to 0.5 kg, and 360 (violet-red) mapped to 50 kg.
