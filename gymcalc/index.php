@@ -61,6 +61,12 @@ if ($add_timestamp) {
       <input id="bar-weight" type="number" min="0" max="100" step="0.1">
       <span>kg</span>
     </div>
+    <div id="rare-plates-wrapper" class="field">
+      <span>Include</span>
+      <input id="rare-plate-15" type="checkbox" value="1" checked><label for="rare-plate-15">15 kg</label>
+      <input id="rare-plate-25" type="checkbox" value="1" checked><label for="rare-plate-25">25 kg</label>
+      <span>plates</span>
+    </div>
     <div id="num-dumbbells-wrapper" class="field">
       <input id="num-dumbbells-1" name="num-dumbbells" type="radio" value="1" checked><label for="num-dumbbells-1">1 or</label>
       <input id="num-dumbbells-2" name="num-dumbbells" type="radio" value="2"><label for="num-dumbbells-2">2 dumbbells</label>

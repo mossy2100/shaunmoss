@@ -1,6 +1,7 @@
 ($ => {
   const percentages = [50, 70, 100, 90, 80];
-  const plateWeights = [1.25, 2.5, 5, 10, 20, 25];
+  const commonPlateWeights = [1.25, 2.5, 5, 10, 20];
+  const rarePlateWeights = [15, 25];
   const allPlateWeights = [
     0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25,
     0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5,
@@ -149,11 +150,13 @@
    *   The bar weight for a barbell, or starting resistance for a machine.
    * @param {boolean} split
    *   If the weight of the plates needs to be divided in half.
+   * @param {Array} plateWeights
+   *   The common plates plus any rare plates selected.
    *
    * @return {object}
    *   The closest weight possible and the plate weights to select.
    */
-  function calcPlates(idealTotal, bar, split) {
+  function calcPlates(idealTotal, bar, split, plateWeights) {
     // Calculate the split factor.
     const factor = split ? 2 : 1;
 
@@ -207,7 +210,7 @@
     if (diffAbove <= diffBelow) {
       // Recalculate to find the best plate mix for closest weight above.
       closest = roundTo3DecimalPlaces(closestAbove * factor + bar);
-      return calcPlates(closest, bar, split);
+      return calcPlates(closest, bar, split, plateWeights);
     }
 
     // Below weight is closer to the ideal.
@@ -446,14 +449,16 @@
    * Get the width of the plate <span> element.
    *
    * @param {number} weight
-   *   The plate weight.
+   *   The current plate weight.
    *
    * @return {number}
    *   The width of the span in em.
    */
   function getPlateWidth(weight) {
-    const maxWeight = plateWeights[plateWeights.length - 1]; // kg
-    const ratio = (maxPlateWidth - minPlateWidth) / maxWeight;
+    const plateWeights = commonPlateWeights.concat(rarePlateWeights).sort(sortAsc);
+    const minWeight = plateWeights[0];
+    const maxWeight = plateWeights[plateWeights.length - 1];
+    const ratio = (maxPlateWidth - minPlateWidth) / (maxWeight - minWeight);
     return roundTo3DecimalPlaces(minPlateWidth + ratio * weight);
   }
 
@@ -549,6 +554,16 @@
     let bar = $('#bar-weight').val();
     bar = bar === '' ? 0 : parseFloat(bar);
 
+    // Get the plate weights.
+    let plateWeights = commonPlateWeights.slice();
+    if ($('#rare-plate-15').is(':checked')) {
+      plateWeights.push(15);
+    }
+    if ($('#rare-plate-25').is(':checked')) {
+      plateWeights.push(25);
+    }
+    plateWeights.sort(sortAsc);
+
     // Reset the results.
     const $results = $('#results');
     $results.html('');
@@ -567,7 +582,7 @@
       const idealWeight = roundTo3DecimalPlaces(goal * (percent / 100));
 
       // Get best plate selection.
-      const { closest, platesWeight, plates } = calcPlates(idealWeight, bar, split);
+      const { closest, platesWeight, plates } = calcPlates(idealWeight, bar, split, plateWeights);
 
       // Add the result.
       const $row = $(`<div class="result-row">`);
@@ -669,12 +684,15 @@
     const $numDumbbellsWrapper = $('#num-dumbbells-wrapper');
     const $pinStackWrapper = $('#pin-stack-wrapper');
     const $addOnWeightsWrapper = $('#addon-weights-wrapper');
+    const $rarePlatesWrapper = $('#rare-plates-wrapper');
 
-    // Determine if bar weight should be visible.
+    // Determine if bar weight/starting resistance and rare plates should be visible.
     if (exerciseType === 'dumbbell' || exerciseType === 'machine-pin') {
       $barWeightWrapper.hide();
+      $rarePlatesWrapper.hide();
     } else {
       $barWeightWrapper.show();
+      $rarePlatesWrapper.show();
       // Set the label.
       if (exerciseType === 'barbell') {
         $barWeightLabel.html('Bar weight');
