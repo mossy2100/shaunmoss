@@ -10,17 +10,21 @@
   let dumbbellWeights;
   const pinStacks = [
     {
-      name: '5-138',
-      weights: [5, 12, 19, 26, 33, 40, 47, 54, 61, 68, 75, 82, 89, 96, 103, 110, 117, 124, 131, 138]
+      name: '2.5-45.5',
+      weights: [2.5, 5, 7.5, 10, 12.5, 15, 17.5, 21, 24.5, 28, 31.5, 35, 38.5, 42, 45.5]
     },
     {
       name: '2.5-63.5',
       weights: [2.5, 6, 9.5, 13, 16.5, 20, 23.5, 28.5, 33.5, 38.5, 43.5, 48.5, 53.5, 58.5, 63.5]
     },
     {
-      name: '2.5-45.5',
-      weights: [2.5, 5, 7.5, 10, 12.5, 15, 17.5, 21, 24.5, 28, 31.5, 35, 38.5, 42, 45.5]
-    }
+      name: '5-82',
+      weights: [5, 12, 19, 26, 33, 40, 47, 54, 61, 68, 75, 82]
+    },
+    {
+      name: '5-138',
+      weights: [5, 12, 19, 26, 33, 40, 47, 54, 61, 68, 75, 82, 89, 96, 103, 110, 117, 124, 131, 138]
+    },
   ];
   const addonWeights = [2.25, 2.25, 2.5, 2.5];
   const minPlateWidth = 3; // em
@@ -535,13 +539,21 @@
 
   /**
    * Calculate and display the results for barbell or unilateral plate-loaded machine.
-   *
-   * @param {boolean} split
-   *   If two equal sets of plates are needed.
    */
-  function showPlates(split) {
+  function showPlates() {
     // Get the exercise type.
     const exerciseType = $('#exercise-type').val();
+
+    // Calculate if we want to calculate plates for one side only.
+    let split;
+    if (exerciseType === 'machine-plate') {
+      // Plate-loaded machine.
+      split = $('#machine-split').is(':checked');
+    }
+    else {
+      // Barbell.
+      split = true;
+    }
 
     // Get the goal weight.
     const goal = parseFloat($('#goal-weight').val());
@@ -570,7 +582,7 @@
 
     // Get the plates label.
     let platesLabel = 'Plates';
-    if (exerciseType === 'machine-plate-bi') {
+    if (exerciseType === 'machine-plate' && split) {
       platesLabel = platesLabel.concat(' each side');
     } else if (exerciseType === 'barbell') {
       platesLabel = platesLabel.concat(' each end');
@@ -685,6 +697,7 @@
     const $pinStackWrapper = $('#pin-stack-wrapper');
     const $addOnWeightsWrapper = $('#addon-weights-wrapper');
     const $rarePlatesWrapper = $('#rare-plates-wrapper');
+    const $machineSplitWrapper = $('#machine-split-wrapper');
 
     // Determine if bar weight/starting resistance and rare plates should be visible.
     if (exerciseType === 'dumbbell' || exerciseType === 'machine-pin') {
@@ -699,6 +712,14 @@
       } else {
         $barWeightLabel.html('Starting resistance');
       }
+    }
+
+    // Determine if machine-split should be displayed.
+    if (exerciseType === 'machine-plate') {
+      $machineSplitWrapper.show();
+    }
+    else {
+      $machineSplitWrapper.hide();
     }
 
     // Determine if radios for number of dumbbells should be visible.
@@ -729,12 +750,8 @@
     const exerciseType = $('#exercise-type').val();
     switch (exerciseType) {
       case 'barbell':
-      case 'machine-plate-bi':
-        showPlates(true);
-        break;
-
-      case 'machine-plate-uni':
-        showPlates(false);
+      case 'machine-plate':
+        showPlates();
         break;
 
       case 'dumbbell':

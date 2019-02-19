@@ -1,4 +1,28 @@
 /***********************************************************************************************************************
+ * Mixins
+ */
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) {
+      @content ;
+    }
+  } @else if $point == laptop {
+    @media (min-width: 64em) {
+      @content ;
+    }
+  } @else if $point == tablet {
+    @media (min-width: 50em) {
+      @content ;
+    }
+  } @else if $point == phablet {
+    @media (min-width: 37.5em) {
+      @content ;
+    }
+  }
+}
+
+/***********************************************************************************************************************
  * Colours
  */
 
@@ -49,6 +73,12 @@ body {
   font-size: 40px;
 }
 
+@include breakpoint(desktop) {
+  body {
+    font-size: 20px;
+  }
+}
+
 h1 {
   margin: 0;
   color: $dark-green;
@@ -97,14 +127,23 @@ select, input[type=number], button {
   font-size: 1em;
 }
 
+label {
+  color: $blue;
+}
+
 input[type=checkbox],
 input[type=radio] {
   transform: scale(3, 3);
-  width: 2em;
+  height: 1.3em;
+  margin: 0 1em 0 2em;
 }
 
-label {
-  color: $blue;
+@include breakpoint(desktop) {
+  input[type=checkbox],
+  input[type=radio] {
+    transform: scale(1.5, 1.5);
+    margin: 0 0.5em 0 1em;
+  }
 }
 
 /***********************************************************************************************************************
@@ -113,6 +152,12 @@ label {
 
 #wrapper {
   width: 100%;
+}
+
+@include breakpoint(desktop) {
+  #wrapper {
+    width: 20em;
+  }
 }
 
 .field {
@@ -130,12 +175,10 @@ label {
 
 #num-dumbbells-wrapper {
   display: none;
-  padding-left: 0.5em;
 
   label {
     display: inline;
     color: $black;
-    padding: 0 0.5em;
   }
 }
 
@@ -165,6 +208,14 @@ label {
   }
 }
 
+@include breakpoint(desktop) {
+  #addon-weights {
+    label {
+      padding: 0 0.5em 0 0.5em;
+    }
+  }
+}
+
 #error {
   display: none;
   background-color: $light-red;
@@ -178,6 +229,16 @@ label {
   label {
     display: inline;
     color: black;
+  }
+}
+
+#machine-split-wrapper {
+  label, input {
+    display: inline;
+  }
+
+  label {
+    color: $black;
   }
 }
 
@@ -345,52 +406,4 @@ Lighter versions are for 10% and lighter again for 1% of these weights. The exce
 
 .plate-0_1 {
   background-color: $light-green;
-}
-
-/***********************************************************************************************************************
- * Non-phone overrides.
- */
-
-@mixin breakpoint($point) {
-  @if $point == desktop {
-    @media (min-width: 70em) {
-      @content ;
-    }
-  } @else if $point == laptop {
-    @media (min-width: 64em) {
-      @content ;
-    }
-  } @else if $point == tablet {
-    @media (min-width: 50em) {
-      @content ;
-    }
-  } @else if $point == phablet {
-    @media (min-width: 37.5em) {
-      @content ;
-    }
-  }
-}
-
-@include breakpoint(desktop) {
-  body {
-    font-size: 20px;
-  }
-
-  #wrapper {
-    width: 20em;
-  }
-
-  input[type=checkbox],
-  input[type=radio] {
-    transform: scale(1.5, 1.5);
-  }
-
-  input[type=radio] {
-  }
-
-  #addon-weights {
-    label {
-      padding: 0 0.5em 0 0.5em;
-    }
-  }
 }

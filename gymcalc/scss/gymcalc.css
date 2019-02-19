@@ -1,4 +1,7 @@
 /***********************************************************************************************************************
+ * Mixins
+ */
+/***********************************************************************************************************************
  * Colours
  */
 /***********************************************************************************************************************
@@ -13,6 +16,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px; }
 
+@media (min-width: 70em) {
+  body {
+    font-size: 20px; } }
 h1 {
   margin: 0;
   color: #007f00;
@@ -52,20 +58,29 @@ button {
 select, input[type=number], button {
   font-size: 1em; }
 
-input[type=checkbox],
-input[type=radio] {
-  transform: scale(3, 3);
-  width: 2em; }
-
 label {
   color: #657dff; }
 
+input[type=checkbox],
+input[type=radio] {
+  transform: scale(3, 3);
+  height: 1.3em;
+  margin: 0 1em 0 2em; }
+
+@media (min-width: 70em) {
+  input[type=checkbox],
+  input[type=radio] {
+    transform: scale(1.5, 1.5);
+    margin: 0 0.5em 0 1em; } }
 /***********************************************************************************************************************
  * Layout.
  */
 #wrapper {
   width: 100%; }
 
+@media (min-width: 70em) {
+  #wrapper {
+    width: 20em; } }
 .field {
   padding: 0.5em 0; }
   .field label {
@@ -76,12 +91,10 @@ label {
   width: 100%; }
 
 #num-dumbbells-wrapper {
-  display: none;
-  padding-left: 0.5em; }
+  display: none; }
   #num-dumbbells-wrapper label {
     display: inline;
-    color: #000;
-    padding: 0 0.5em; }
+    color: #000; }
 
 #pin-stack-wrapper {
   display: none; }
@@ -99,6 +112,9 @@ label {
 #addon-weights span:last-child label {
   padding-right: 0; }
 
+@media (min-width: 70em) {
+  #addon-weights label {
+    padding: 0 0.5em 0 0.5em; } }
 #error {
   display: none;
   background-color: #ffb2b2;
@@ -110,6 +126,11 @@ label {
 #rare-plates-wrapper label {
   display: inline;
   color: black; }
+
+#machine-split-wrapper label, #machine-split-wrapper input {
+  display: inline; }
+#machine-split-wrapper label {
+  color: #000; }
 
 /***********************************************************************************************************************
  * Results.
@@ -238,22 +259,5 @@ Lighter versions are for 10% and lighter again for 1% of these weights. The exce
 
 .plate-0_1 {
   background-color: #b3ffb2; }
-
-/***********************************************************************************************************************
- * Non-phone overrides.
- */
-@media (min-width: 70em) {
-  body {
-    font-size: 20px; }
-
-  #wrapper {
-    width: 20em; }
-
-  input[type=checkbox],
-  input[type=radio] {
-    transform: scale(1.5, 1.5); }
-
-  #addon-weights label {
-    padding: 0 0.5em 0 0.5em; } }
 
 /*# sourceMappingURL=gymcalc.css.map */
