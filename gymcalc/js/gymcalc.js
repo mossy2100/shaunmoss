@@ -1,6 +1,6 @@
 ($ => {
   const percentages = [50, 70, 100, 90, 80];
-  const commonPlateWeights = [1.25, 2.5, 5, 10, 20];
+  const commonPlateWeights = [0.25, 0.5, 0.75, 1, 1.25, 2.5, 5, 10, 20];
   const rarePlateWeights = [15, 25];
   const allPlateWeights = [
     0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25,

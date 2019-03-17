@@ -46,7 +46,8 @@ $cyan: #66ccff;
 $blue: #657dff;
 $purple: #cc65ff;
 $yellow: #ffff00;
-$orange: #ffa54c;
+$yellow-orange: #ffd500;
+$orange: #ffa64d;
 $green: #00e500;
 $pink: #ff99ff;
 
@@ -369,19 +370,25 @@ Lighter versions are for 10% and lighter again for 1% of these weights. The exce
 }
 
 .plate-1 {
-  background-color: $green;
+  //background-color: $green;
+  background-color: $yellow-orange;
 }
 
 .plate-0_75 {
-  background-color: $pink;
+  //background-color: $pink;
+  background-color: $dark-red;
+  color: $white;
 }
 
 .plate-0_5 {
-  background-color: $grey;
+  //background-color: $grey;
+  background-color: $dark-blue;
+  color: $white;
 }
 
 .plate-0_25 {
-  background-color: $light-red;
+  //background-color: $light-red;
+  background-color: $white;
 }
 
 .plate-0_225 {
