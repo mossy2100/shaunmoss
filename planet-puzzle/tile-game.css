@@ -1,0 +1,99 @@
+body,
+select,
+button {
+  font-size: 16px;
+  font-family: Arial, Helvetica, Tahoma, sans-serif;
+}
+
+#tile-holder {
+  border-collapse: collapse;
+  width: 300px;
+  z-index: 10;
+  background-color: silver;
+}
+
+#tile-holder td,
+.tile {
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  margin: 0;
+  border: solid 1px gray;
+}
+
+.tile {
+  background-image: url("images/Earth.jpg");
+  background-size: 300px 300px;
+  position: absolute;
+  overflow: hidden;
+}
+
+#tile-0-0 {
+  background-position: 0 0;
+}
+
+#tile-0-1 {
+  background-position: -100px 0;
+}
+
+#tile-0-2 {
+  background-position: -200px 0;
+}
+
+#tile-1-0 {
+  background-position: 0 -100px;
+}
+
+#tile-1-1 {
+  background-position: -100px -100px;
+}
+
+#tile-1-2 {
+  background-position: -200px -100px;
+}
+
+#tile-2-0 {
+  background-position: 0 -200px;
+}
+
+#tile-2-1 {
+  background-position: -100px -200px;
+}
+
+#tile-2-2 {
+  background-position: -200px -200px;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  background-color: aliceblue;
+  border: solid 1px royalblue;
+  border-radius: 5px;
+}
+
+form {
+  padding: 1em 0;
+}
+
+ol,
+form div {
+  margin: 0.5em 0;
+}
+
+#score {
+  background-color: palegreen;
+  border: solid 1px forestgreen;
+  display: inline-block;
+  width: 50px;
+  padding: 5px;
+}
+
+#done {
+  color: red;
+  font-weight: bold;
+  padding: 5px;
+}

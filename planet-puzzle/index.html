@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>Tile Puzzle</title>
+  <link rel="stylesheet" href="tile-game.css" type="text/css" media="screen"/>
+  <script type="text/javascript" src="tile-game.js"></script>
+</head>
+<body>
+
+  <h1>Tile Puzzle</h1>
+
+  <ol>
+    <li>To start a new game, choose a world and click "New game".</li>
+    <li>Click any tile to move it into the adjacent blank space.</li>
+    <li>The goal is to solve the puzzle in the least number of moves.</li>
+    <li>Your score starts at 0. Every time you click a tile, it will go up by 1.</li>
+    <li>If you click a tile that can't move, that still counts towards your score!</li>
+  </ol>
+
+  <form>
+    <div>
+      <select id="world">
+        <option value="Sun">Sun</option>
+        <option value="Mercury">Mercury</option>
+        <option value="Venus">Venus</option>
+        <option value="Earth" selected>Earth</option>
+        <option value="Moon">Moon</option>
+        <option value="Mars">Mars</option>
+        <option value="Ceres">Ceres</option>
+        <option value="Jupiter">Jupiter</option>
+        <option value="Saturn">Saturn</option>
+        <option value="Uranus">Uranus</option>
+        <option value="Neptune">Neptune</option>
+        <option value="Pluto">Pluto</option>
+      </select>
+      <button id="new-game-btn">New game</button>
+    </div>
+    <div>
+      Your score:
+      <output id="score">0</output>
+      <output id="done"></output>
+    </div>
+  </form>
+
+  <table id="tile-holder">
+    <tr>
+      <td id="tile-space-0-0"></td>
+      <td id="tile-space-0-1"></td>
+      <td id="tile-space-0-2"></td>
+    </tr>
+    <tr>
+      <td id="tile-space-1-0"></td>
+      <td id="tile-space-1-1"></td>
+      <td id="tile-space-1-2"></td>
+    </tr>
+    <tr>
+      <td id="tile-space-2-0"></td>
+      <td id="tile-space-2-1"></td>
+      <td id="tile-space-2-2"></td>
+    </tr>
+  </table>
+
+</body>
+</html>
