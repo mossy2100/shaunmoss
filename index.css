@@ -1,0 +1,25 @@
+body {
+  background-color: black;
+}
+
+.container {
+  border: solid 5px silver;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  width: 1000px;
+  max-width: 90%;
+  margin: 20px auto;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: red;
+}
